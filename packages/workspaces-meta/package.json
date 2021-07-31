@@ -1,0 +1,29 @@
+{
+  "name": "isbt-workspaces-meta",
+  "version": "1.0.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/cjs/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@types/lodash": "^4.0.0",
+    "fp-ts": "^2.11.1",
+    "globby": "^11.0.0",
+    "io-ts": "^2.0.0",
+    "lodash": "^4.0.0",
+    "mobx": "^6.0.0",
+    "read-pkg": "^5.0.0"
+  },
+  "devDependencies": {
+    "tslib": "^2.0.0",
+    "typescript": "^4.0.0"
+  },
+  "peerDependencies": {
+    "tslib": ">=2",
+    "typescript": ">=4"
+  },
+  "license": "ISC"
+}

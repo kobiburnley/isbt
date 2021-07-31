@@ -1,0 +1,9 @@
+{
+  "extends": "isbt-ts/tsconfig.base.json",
+  "exclude": [
+    "node_modules",
+    "packages/ts",
+    "packages/workspaces-meta",
+    "packages/isbt"
+  ]
+}
