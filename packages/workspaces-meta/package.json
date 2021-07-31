@@ -1,6 +1,6 @@
 {
   "name": "isbt-workspaces-meta",
-  "version": "1.1.0",
+  "version": "1.3.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/cjs/index.d.ts",
@@ -13,6 +13,7 @@
     "fp-ts": "^2.11.1",
     "globby": "^11.0.0",
     "io-ts": "^2.0.0",
+    "isbt-ts": "1.3.0",
     "lodash": "^4.0.0",
     "mobx": "^6.0.0",
     "read-pkg": "^5.0.0"
