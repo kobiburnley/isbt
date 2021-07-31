@@ -7,7 +7,8 @@
     "packages/isbt"
   ],
   "scripts": {
-    "build": "node node_modules/isbt/dist/cjs/index.js"
+    "build": "node node_modules/isbt/dist/cjs/index.js",
+    "publish": "yarn workspaces run publish"
   },
   "devDependencies": {
     "husky": "^4.0.0",
