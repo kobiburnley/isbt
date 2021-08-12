@@ -1,9 +1,23 @@
 {
   "extends": "isbt-ts/tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
   "exclude": [
     "node_modules",
     "packages/ts",
     "packages/workspaces-meta",
     "packages/isbt"
+  ],
+  "references": [
+    {
+      "path": "packages/ts/tsconfig.esm.json"
+    },
+    {
+      "path": "packages/workspaces-meta/tsconfig.esm.json"
+    },
+    {
+      "path": "packages/isbt/tsconfig.esm.json"
+    }
   ]
 }
