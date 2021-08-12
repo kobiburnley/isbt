@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "build": "node node_modules/isbt/dist/cjs/index.js",
+    "bump": "lerna version --conventional-commits --no-push",
     "publish": "yarn workspaces run publish"
   },
   "devDependencies": {
@@ -31,5 +32,6 @@
     "*.{js,ts,tsx,json}": [
       "prettier --write"
     ]
-  }
+  },
+  "version": "0.0.0"
 }
