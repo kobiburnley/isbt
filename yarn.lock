@@ -975,34 +975,34 @@ isarray@~1.0.0:
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
   integrity sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=
 
-isbt-ts@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/isbt-ts/-/isbt-ts-1.3.0.tgz#f6b228b765baa0157e6d414a76a20a88d73c3ea3"
-  integrity sha512-6Kk1hpWsxQ02mSUR/Zr2YNDYAAJvMICIxsDUHasFm9qPlxg2wUqwSSSygQXTeU6vTf4TehWRuhsrBROfwv0OmQ==
+isbt-ts@1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/isbt-ts/-/isbt-ts-1.4.5.tgz#313dc682416c5ebd5048c55fa8515d8f0b3fa7dd"
+  integrity sha512-FnpnzT1OJu8Y0E37TS4NZjf5xBtIc1BL5hGQuXzPkpxEwZj/U/pNzCP3Hq4fbGsD7n9Uzz9X/W1GwKYlcfjjbQ==
 
-isbt-workspaces-meta@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/isbt-workspaces-meta/-/isbt-workspaces-meta-1.3.0.tgz#8c173a355a7c3edecdda40a2b36cf61d28ffaee9"
-  integrity sha512-6qoKPbaj+k1Tr83KbTHlkN+Td78i8tABqPn/X6yiMdE6d6OrZbNI2tbP3hmaNwpJ9EY3SyOsdCs6imwoT5WDog==
+isbt-workspaces-meta@1.4.6:
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/isbt-workspaces-meta/-/isbt-workspaces-meta-1.4.6.tgz#2ca680339ca84c720d7cde967844e88b500756e4"
+  integrity sha512-bvVdocxLAa4cWwA569w5NNXQ0LXhL5r7nHMx+JHk9uYf2RSZ0caTo1Y4Uz89sl4bScosgGw+uSZXzKhPYIEEOA==
   dependencies:
     "@types/lodash" "^4.0.0"
     fp-ts "^2.11.1"
     globby "^11.0.0"
     io-ts "^2.0.0"
-    isbt-ts "1.3.0"
+    isbt-ts "1.4.5"
     lodash "^4.0.0"
     mobx "^6.0.0"
     read-pkg "^5.0.0"
 
-isbt@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/isbt/-/isbt-1.3.0.tgz#1f4c36e196a3a045e8f9cbe91750a16b11fe87aa"
-  integrity sha512-Y85432++ma+/zWPf735h70YTtfe/0OtUoTcr87r/QKBDPLNLWqe57Ll4WujVgvTLg+t2X9BJb/k8VNOPbwgeOA==
+isbt@1.4.6:
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/isbt/-/isbt-1.4.6.tgz#b1dc2feb196c79e94db05efea9317e897d03cfee"
+  integrity sha512-9G6tlVkI2TeF90grNdDtLELJNUT75P8+OwkKOKg5lajA1KxLIXSEN0m9cBftEZHKBw1VS2/x40K+N8hnsWJA6Q==
   dependencies:
     "@types/node" ">=14"
     fp-ts "^2.11.1"
-    isbt-ts "1.3.0"
-    isbt-workspaces-meta "1.3.0"
+    isbt-ts "1.4.5"
+    isbt-workspaces-meta "1.4.6"
 
 isexe@^2.0.0:
   version "2.0.0"
