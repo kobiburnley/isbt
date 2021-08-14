@@ -219,6 +219,13 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@qoby/chain-error@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@qoby/chain-error/-/chain-error-1.0.0.tgz#c5e2c5fc80f7189da2107b5683140f74dff45a47"
+  integrity sha512-YnJGQthED6S2P4WRu3s84szZ5vkCHXWvPihEj0Eu8c/m6T7Ce03/2g60Fbal3dFsMSN6kOGw9L4+jGK0K0LqFQ==
+  dependencies:
+    tslib "^2.0.0"
+
 "@tsconfig/node10@^1.0.7":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@tsconfig/node10/-/node10-1.0.8.tgz#c1e4e80d6f964fbecb3359c43bd48b40f7cadad9"
@@ -249,7 +256,7 @@
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.5.tgz#1001cc5e6a3704b83c236027e77f2f58ea010f40"
   integrity sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==
 
-"@types/node@^14.0.0", "@types/node@>=14":
+"@types/node@>=14", "@types/node@^14.0.0":
   version "14.17.9"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.17.9.tgz#b97c057e6138adb7b720df2bd0264b03c9f504fd"
   integrity sha512-CMjgRNsks27IDwI785YMY0KLt3co/c0cQ5foxHYv/shC2w8oOnVwz5Ubq1QG5KzrcW+AXk6gzdnxIkDnTvzu3g==
