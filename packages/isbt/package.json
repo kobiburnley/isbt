@@ -13,7 +13,7 @@
     "dist/esm"
   ],
   "dependencies": {
-    "@qoby/chain-error": "^1.0.0",
+    "fp-error": "^1.0.0",
     "fp-ts": "^2.11.1",
     "isbt-ts": "1.4.7",
     "isbt-workspaces-meta": "1.4.8",

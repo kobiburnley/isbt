@@ -11,7 +11,8 @@ import {
   WorkspacesState,
 } from 'isbt-workspaces-meta'
 import { exec } from 'child_process'
-import { isLeft, tryCatch } from 'fp-ts/Either'
+import { isLeft } from 'fp-ts/Either'
+import { tryCatch } from 'fp-error'
 ;(async () => {
   try {
     const state = new WorkspacesState({
@@ -38,12 +39,10 @@ import { isLeft, tryCatch } from 'fp-ts/Either'
     await state.init()
     await state.submitTSConfig()
 
-    const tsPackageJSONPathEither = tryCatch(
-      () =>
-        require.resolve('typescript/package.json', {
-          paths: [process.cwd()],
-        }),
-      (e) => e as Error,
+    const tsPackageJSONPathEither = tryCatch(() =>
+      require.resolve('typescript/package.json', {
+        paths: [process.cwd()],
+      }),
     )
 
     if (isLeft(tsPackageJSONPathEither)) {

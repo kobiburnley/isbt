@@ -219,13 +219,6 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@qoby/chain-error@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@qoby/chain-error/-/chain-error-1.0.0.tgz#c5e2c5fc80f7189da2107b5683140f74dff45a47"
-  integrity sha512-YnJGQthED6S2P4WRu3s84szZ5vkCHXWvPihEj0Eu8c/m6T7Ce03/2g60Fbal3dFsMSN6kOGw9L4+jGK0K0LqFQ==
-  dependencies:
-    tslib "^2.0.0"
-
 "@tsconfig/node10@^1.0.7":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@tsconfig/node10/-/node10-1.0.8.tgz#c1e4e80d6f964fbecb3359c43bd48b40f7cadad9"
@@ -703,6 +696,11 @@ find-versions@^4.0.0:
   integrity sha512-wgpWy002tA+wgmO27buH/9KzyEOQnKsG/R0yrcjPT9BOFm0zRBVQbZ95nRGXWMywS8YR5knRbpohio0bcJABxQ==
   dependencies:
     semver-regex "^3.1.2"
+
+fp-error@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/fp-error/-/fp-error-1.0.0.tgz#88b876dbeaabfedf1be175cbbee11065f83ee9ca"
+  integrity sha512-hk9nanNx8s4YgNhhbSSYkLJc6XJWqFr7/wUjEUYrcYPF/XtvZEF1OMuPxsg6swbmopZNHe53xnHaU0rJdNI4vw==
 
 fp-ts@^2.11.1:
   version "2.11.1"
