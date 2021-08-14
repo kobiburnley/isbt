@@ -9,7 +9,8 @@
     "isbt": "dist/cjs/index.js"
   },
   "files": [
-    "dist"
+    "dist/cjs",
+    "dist/esm"
   ],
   "dependencies": {
     "@types/node": ">=14",

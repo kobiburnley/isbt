@@ -32,6 +32,9 @@ import { exec } from 'child_process'
       tsconfigStorage: new TSConfigStorageNode(),
     })
 
+    const { customization } = state
+    const { tsconfig } = customization
+
     await state.init()
     await state.submitTSConfig()
 
@@ -48,38 +51,31 @@ import { exec } from 'child_process'
       paths: [tsPackagePath],
     })
 
-    await Promise.all(
-      [
-        state.customization.tsconfig.cjsName,
-        state.customization.tsconfig.esmName,
-      ].map(async (type) => {
-        const tscCommand = [
-          process.execPath,
-          tscBin,
-          `--build tsconfig.${type}.json`,
-        ].join(' ')
+    const tscCommand = [
+      process.execPath,
+      tscBin,
+      `--build tsconfig.${tsconfig.esmName}.json`,
+    ].join(' ')
 
-        console.log(`> ${tscCommand}`)
+    console.log(`> ${tscCommand}`)
 
-        await new Promise<void>((resolve, reject) => {
-          const tscProcess = exec(
-            tscCommand,
-            {
-              cwd: process.cwd(),
-            },
-            (error) => {
-              if (error) {
-                reject(new Error(error.message))
-              } else {
-                resolve()
-              }
-            },
-          )
+    await new Promise<void>((resolve, reject) => {
+      const tscProcess = exec(
+        tscCommand,
+        {
+          cwd: process.cwd(),
+        },
+        (error) => {
+          if (error) {
+            reject(new Error(error.message))
+          } else {
+            resolve()
+          }
+        },
+      )
 
-          tscProcess.stdout?.pipe(process.stdout)
-        })
-      }),
-    )
+      tscProcess.stdout?.pipe(process.stdout)
+    })
   } catch (e) {
     console.error('isbt error')
     console.error(e)

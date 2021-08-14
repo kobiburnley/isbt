@@ -7,9 +7,10 @@
     "packages/isbt"
   ],
   "scripts": {
+    "tsc": "tsc --build",
     "build": "node node_modules/isbt/dist/cjs/index.js",
     "bump": "lerna version --conventional-commits --no-push",
-    "publish": "yarn workspaces run publish"
+    "publish": "yarn workspaces run publish --registry"
   },
   "devDependencies": {
     "husky": "^4.0.0",

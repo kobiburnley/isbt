@@ -141,9 +141,6 @@ export class WorkspaceState {
       compilerOptions: {
         rootDir: tsconfigCustomization.rootDir,
       },
-      references: this.dependencies.map((workspace) => ({
-        path: workspace.dir,
-      })),
     }
 
     await Promise.all([
@@ -168,6 +165,9 @@ export class WorkspaceState {
             compilerOptions: {
               outDir: `${outDir}/${cjsName}`,
             },
+            references: this.dependencies.map((workspace) => ({
+              path: workspace.dir,
+            })),
           },
         ],
         {
@@ -184,6 +184,14 @@ export class WorkspaceState {
               outDir: `${outDir}/${esmName}`,
               module: 'esnext',
             },
+            references: [
+              {
+                path: `./tsconfig.${cjsName}.json`,
+              },
+              ...this.dependencies.map((workspace) => ({
+                path: workspace.dir,
+              })),
+            ],
           },
         ],
         {

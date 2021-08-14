@@ -99,17 +99,9 @@ export class WorkspacesState {
   async submitRootTSConfig() {
     const { tsconfigStorage, customization } = this
     const { tsconfig: tsconfigCustomization } = customization
-    const { outDir, cjsName, esmName } = tsconfigCustomization
-
-    const baseTSConfigRelative = await tsconfigStorage.getRelativeExtends(
-      this.cwd,
-      {
-        base: tsconfigCustomization.base,
-      },
-    )
+    const { outDir, esmName } = tsconfigCustomization
 
     const tsconfigDefaults = {
-      extends: baseTSConfigRelative,
       compilerOptions: {
         outDir,
       },
@@ -119,42 +111,20 @@ export class WorkspacesState {
       })),
     }
 
-    await Promise.all([
-      tsconfigStorage.updateOrCreate(
-        this.cwd,
-        [
-          {
-            extends: tsconfigCustomization.extends,
-            exclude: ['node_modules', ...this.config.patterns],
-          },
-        ],
+    await tsconfigStorage.updateOrCreate(
+      this.cwd,
+      [
+        tsconfigDefaults,
         {
-          path: tsconfigCustomization.base,
+          extends: tsconfigCustomization.extends,
+          exclude: ['node_modules', ...this.config.patterns],
         },
-      ),
-
-      tsconfigStorage.updateOrCreate(this.cwd, [tsconfigDefaults], {
+      ],
+      {
         ...tsconfigCustomization,
-        path: `tsconfig.${cjsName}.json`,
-      }),
-
-      tsconfigStorage.updateOrCreate(
-        this.cwd,
-        [
-          tsconfigDefaults,
-          {
-            compilerOptions: {
-              ...tsconfigDefaults.compilerOptions,
-              module: 'esnext',
-            },
-          },
-        ],
-        {
-          ...tsconfigCustomization,
-          path: `tsconfig.${esmName}.json`,
-        },
-      ),
-    ])
+        path: `tsconfig.${esmName}.json`,
+      },
+    )
   }
 
   async submitTSConfig() {

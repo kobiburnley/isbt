@@ -6,7 +6,8 @@
   "types": "dist/cjs/index.d.ts",
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist/cjs",
+    "dist/esm"
   ],
   "dependencies": {
     "@types/lodash": "^4.0.0",
