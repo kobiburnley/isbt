@@ -10,7 +10,7 @@
     "tsc": "tsc --build",
     "build": "node node_modules/isbt/dist/cjs/index.js",
     "bump": "lerna version --conventional-commits --no-push",
-    "publish": "yarn workspaces run publish --registry"
+    "publish": "yarn workspaces run publish --registry https://registry.npmjs.org"
   },
   "devDependencies": {
     "husky": "^4.0.0",
