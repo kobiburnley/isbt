@@ -1,0 +1,8 @@
+{
+  "name": "isbt-ts",
+  "version": "1.4.6",
+  "files": [
+    "tsconfig.base.json"
+  ],
+  "license": "ISC"
+}

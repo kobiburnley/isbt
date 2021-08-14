@@ -1,0 +1,30 @@
+{
+  "name": "isbt",
+  "version": "1.4.7",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/cjs/index.d.ts",
+  "sideEffects": false,
+  "bin": {
+    "isbt": "dist/cjs/index.js"
+  },
+  "files": [
+    "dist/cjs",
+    "dist/esm"
+  ],
+  "dependencies": {
+    "@types/node": ">=14",
+    "fp-ts": "^2.11.1",
+    "isbt-ts": "1.4.6",
+    "isbt-workspaces-meta": "1.4.7"
+  },
+  "devDependencies": {
+    "tslib": "^2.0.0",
+    "typescript": "^4.0.0"
+  },
+  "peerDependencies": {
+    "tslib": ">=2",
+    "typescript": ">=4"
+  },
+  "license": "ISC"
+}
