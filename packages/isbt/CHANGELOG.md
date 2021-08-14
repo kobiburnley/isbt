@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.4.8 (2021-08-14)
+
+**Note:** Version bump only for package isbt
+
+
+
+
+
 ## [1.4.7](https://github.com/kobiburnley/isbt/compare/isbt@1.4.6...isbt@1.4.7) (2021-08-14)
 
 **Note:** Version bump only for package isbt

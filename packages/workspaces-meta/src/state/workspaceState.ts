@@ -141,6 +141,7 @@ export class WorkspaceState {
       compilerOptions: {
         rootDir: tsconfigCustomization.rootDir,
       },
+      include: [tsconfigCustomization.include[0]],
     }
 
     await Promise.all([

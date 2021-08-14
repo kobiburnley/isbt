@@ -1,6 +1,6 @@
 {
   "name": "isbt-workspaces-meta",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/cjs/index.d.ts",
@@ -19,7 +19,7 @@
     "read-pkg": "^5.0.0"
   },
   "devDependencies": {
-    "isbt-ts": "1.4.6",
+    "isbt-ts": "1.4.7",
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
