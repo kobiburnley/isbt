@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "tsc": "tsc --build",
-    "build": "node node_modules/isbt/dist/cjs/index.js",
+    "build": "isbt",
     "bump": "lerna version --conventional-commits --no-push",
     "publish": "lerna exec 'npm publish --registry https://registry.npmjs.org'"
   },
