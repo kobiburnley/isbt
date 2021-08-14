@@ -29,5 +29,5 @@ jobs:
         run: yarn build
 
       - name: Publish
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ github.ref == 'refs/heads/publish' }}
         run: yarn publish
