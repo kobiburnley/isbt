@@ -13,6 +13,7 @@ import {
 import { exec } from 'child_process'
 import { isLeft } from 'fp-ts/Either'
 import { tryCatch } from 'fp-error'
+
 ;(async () => {
   try {
     const state = new WorkspacesState({
