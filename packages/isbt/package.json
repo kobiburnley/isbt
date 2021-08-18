@@ -17,6 +17,7 @@
     "@isbt/workspaces-meta": "^1.5.0",
     "@lerna/cli": "^4.0.0",
     "@lerna/exec": "^4.0.0",
+    "@types/jest": "^27.0.0",
     "fp-error": "^1.0.0",
     "fp-ts": "^2.11.1",
     "husky": "^4.0.0",
