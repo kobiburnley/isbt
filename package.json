@@ -9,8 +9,8 @@
   ],
   "scripts": {
     "build": "isbt",
-    "bump": "lerna version --exact --conventional-commits --no-push",
-    "publish": "lerna exec 'npm publish --registry https://registry.npmjs.org'"
+    "test": "yarn workspaces run jest",
+    "release": "lerna publish --message \"Publish [skip ci]\" --exact --conventional-commits"
   },
   "devDependencies": {
     "isbt": "1.4.6"
