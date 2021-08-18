@@ -14,12 +14,13 @@
     "dist/esm"
   ],
   "dependencies": {
+    "@isbt/workspaces-meta": "1.4.9",
     "@lerna/cli": "^4.0.0",
     "@lerna/exec": "^4.0.0",
     "fp-error": "^1.0.0",
     "fp-ts": "^2.11.1",
+    "jest": "^27.0.0",
     "husky": "^4.0.0",
-    "@isbt/workspaces-meta": "1.4.9",
     "lint-staged": "^10.0.0",
     "prettier": "^2.0.0",
     "ts-node": "^10.0.0",
