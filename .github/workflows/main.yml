@@ -23,7 +23,7 @@ jobs:
         run: yarn build
 
       - name: Test
-        run: yarn exec lerna run test
+        run: yarn workspaces run jest --passWithNoTests
 
       - name: Publish
         if: ${{ github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, '[release]') }}
