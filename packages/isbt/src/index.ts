@@ -9,7 +9,7 @@ import {
   PackageJSONStorageNode,
   TSConfigStorageNode,
   WorkspacesState,
-} from 'isbt-workspaces-meta'
+} from '@isbt/workspaces-meta'
 import { exec } from 'child_process'
 import { isLeft } from 'fp-ts/Either'
 import { tryCatch } from 'fp-error'
