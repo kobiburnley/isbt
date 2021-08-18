@@ -18,7 +18,7 @@ import { tryCatch } from 'fp-error'
     const state = new WorkspacesState({
       customization: {
         tsconfig: {
-          extends: 'isbt-ts/tsconfig.base.json',
+          extends: '@isbt/core/tsconfig.base.json',
           base: 'tsconfig.json',
           outDir: 'dist',
           rootDir: 'src',
