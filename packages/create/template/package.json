@@ -7,7 +7,7 @@
   "scripts": {
     "build": "isbt",
     "test": "yarn workspaces run jest",
-    "release": "lerna publish --message \"Publish [skip ci]\" --exact --conventional-commits"
+    "release": "lerna publish --message \"Publish [skip ci]\" --conventional-commits"
   },
   "devDependencies": {
     "@isbt/core": "^1.6.0"
