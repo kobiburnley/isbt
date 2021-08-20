@@ -1298,6 +1298,13 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@qoby/chain-error@^1.0.0":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@qoby/chain-error/-/chain-error-1.0.4.tgz#2ac2c4e754bdfb2280d3bcbd0dce03408bee7a79"
+  integrity sha512-d0HrruOCBKLRjm3xlRnWCrW2A7npbmNaRcHT/huw/w7GgnxgxJ+lVTX9mUGp++ENtiZOD8/sHJr/fbHPKaSz+w==
+  dependencies:
+    tslib "^2.0.0"
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.8.3.tgz#3802ddd21a50a949b6721ddd72da36e67e7f1b2d"
@@ -1349,6 +1356,13 @@
   integrity sha512-K2waXdXBi2302XUdcHcR1jCeU0LL4TD9HRs/gk0N2Xvrht+G/BfJa4QObBQZfhMdxiCpV3COl5Nfq4uKTeTnJA==
   dependencies:
     "@babel/types" "^7.3.0"
+
+"@types/fs-extra@^9.0.0":
+  version "9.0.12"
+  resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-9.0.12.tgz#9b8f27973df8a7a3920e8461517ebf8a7d4fdfaf"
+  integrity sha512-I+bsBr67CurCGnSenZZ7v94gd3tc3+Aj2taxMT4yu4ABLuOgOjeFxX3dokG24ztSRg5tnT00sL8BszO7gSMoIw==
+  dependencies:
+    "@types/node" "*"
 
 "@types/graceful-fs@^4.1.2":
   version "4.1.5"
@@ -2268,16 +2282,16 @@ form-data@^3.0.0:
     mime-types "^2.1.12"
 
 fp-error@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/fp-error/-/fp-error-1.0.0.tgz#88b876dbeaabfedf1be175cbbee11065f83ee9ca"
-  integrity sha512-hk9nanNx8s4YgNhhbSSYkLJc6XJWqFr7/wUjEUYrcYPF/XtvZEF1OMuPxsg6swbmopZNHe53xnHaU0rJdNI4vw==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/fp-error/-/fp-error-1.2.0.tgz#e330faaff125b728e0a3ceb2924b915ada60762b"
+  integrity sha512-JtmtLULigHw+aOhQiAF+jkrnNfo8FLfh/AWRAZmaaPX6xUwndEWSuscMuUtkFouLd3T0ycnqazlYuvcRlVSKcA==
 
-fp-ts@^2.11.1:
+fp-ts@^2.0.0, fp-ts@^2.11.1:
   version "2.11.1"
   resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-2.11.1.tgz#b1eeb2540728b6328542664888442f8f805d2443"
   integrity sha512-CJOfs+Heq/erkE5mqH2mhpsxCKABGmcLyeEwPxtbTlkLkItGUs6bmk2WqjB2SgoVwNwzTE5iKjPQJiq06CPs5g==
 
-fs-extra@^9.1.0:
+fs-extra@^9.0.0, fs-extra@^9.1.0:
   version "9.1.0"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-9.1.0.tgz#5954460c764a8da2094ba3554bf839e6b9a7c86d"
   integrity sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ==

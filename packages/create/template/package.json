@@ -1,11 +1,8 @@
 {
-  "name": "isbt-monorepo",
+  "name": "monorepo",
   "private": true,
   "workspaces": [
     "packages/*"
-  ],
-  "files": [
-    "lerna.json"
   ],
   "scripts": {
     "build": "isbt",
@@ -13,7 +10,7 @@
     "release": "lerna publish --message \"Publish [skip ci]\" --exact --conventional-commits"
   },
   "devDependencies": {
-    "isbt": "1.4.6"
+    "@isbt/core": "^1.6.0"
   },
   "husky": {
     "hooks": {
