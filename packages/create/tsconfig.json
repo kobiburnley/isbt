@@ -1,0 +1,4 @@
+{
+  "extends": "isbt-ts/tsconfig.base.json",
+  "include": ["src", "test"]
+}

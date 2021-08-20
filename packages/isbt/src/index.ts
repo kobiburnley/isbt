@@ -13,7 +13,6 @@ import {
 import { exec } from 'child_process'
 import { isLeft } from 'fp-ts/Either'
 import { tryCatch } from 'fp-error'
-
 ;(async () => {
   try {
     const state = new WorkspacesState({
@@ -87,7 +86,6 @@ import { tryCatch } from 'fp-error'
       tscProcess.stdout?.pipe(process.stdout)
     })
   } catch (e) {
-    console.error('isbt error')
     console.error(e)
     process.exitCode = 1
   }

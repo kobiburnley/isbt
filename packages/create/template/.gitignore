@@ -1,0 +1,9 @@
+.idea
+node_modules
+
+/packages/*/dist
+
+/tsconfig.cjs.json
+/tsconfig.esm.json
+/packages/*/tsconfig.cjs.json
+/packages/*/tsconfig.esm.json
