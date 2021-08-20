@@ -9,11 +9,14 @@
     "isbt": "dist/cjs/index.js"
   },
   "files": [
+    "babel.config.js",
     "tsconfig.base.json",
     "dist/cjs",
     "dist/esm"
   ],
   "dependencies": {
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-typescript": "^7.0.0",
     "@isbt/workspaces-meta": "^1.5.0",
     "@lerna/cli": "^4.0.0",
     "@lerna/exec": "^4.0.0",
