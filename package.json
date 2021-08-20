@@ -4,16 +4,14 @@
   "workspaces": [
     "packages/*"
   ],
-  "files": [
-    "lerna.json"
-  ],
   "scripts": {
     "build": "isbt",
     "test": "yarn workspaces run jest",
     "release": "lerna publish --message \"Publish [skip ci]\" --exact --conventional-commits"
   },
   "devDependencies": {
-    "isbt": "1.4.6"
+    "@isbt/core": "1.5.2",
+    "@isbt/workspaces-meta": "1.5.0"
   },
   "husky": {
     "hooks": {

@@ -917,6 +917,24 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@isbt/core@1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@isbt/core/-/core-1.5.2.tgz#6fc096f6e77f9eba04d04bad990448ce5e94f472"
+  integrity sha512-v7qoi5wPyZRPBEZalAdOkWQmsBAu4aDcVOrLr70jPaHx/2GhBBkxm1l8xKlj2ViWEf3vfSihy+pzZv54DlUt6Q==
+  dependencies:
+    "@isbt/workspaces-meta" "^1.5.0"
+    "@lerna/cli" "^4.0.0"
+    "@lerna/exec" "^4.0.0"
+    "@types/jest" "^27.0.0"
+    fp-error "^1.0.0"
+    fp-ts "^2.11.1"
+    husky "^4.0.0"
+    jest "^27.0.0"
+    lint-staged "^10.0.0"
+    prettier "^2.0.0"
+    tslib "^2.0.0"
+    typescript "^4.0.0"
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -1413,7 +1431,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.6.1.tgz#aee62c7b966f55fc66c7b6dfa1d58db2a616da61"
   integrity sha512-Sr7BhXEAer9xyGuCN3Ek9eg9xPviCF2gfu9kTfuU2HkTVAMYSDeX40fvpmo72n5nansg3nsBjuQBrsS28r+NUw==
 
-"@types/node@>=14", "@types/node@^14.0.0":
+"@types/node@^14.0.0":
   version "14.17.9"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.17.9.tgz#b97c057e6138adb7b720df2bd0264b03c9f504fd"
   integrity sha512-CMjgRNsks27IDwI785YMY0KLt3co/c0cQ5foxHYv/shC2w8oOnVwz5Ubq1QG5KzrcW+AXk6gzdnxIkDnTvzu3g==
@@ -2683,35 +2701,6 @@ isarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
   integrity sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=
-
-isbt-ts@1.4.5:
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/isbt-ts/-/isbt-ts-1.4.5.tgz#313dc682416c5ebd5048c55fa8515d8f0b3fa7dd"
-  integrity sha512-FnpnzT1OJu8Y0E37TS4NZjf5xBtIc1BL5hGQuXzPkpxEwZj/U/pNzCP3Hq4fbGsD7n9Uzz9X/W1GwKYlcfjjbQ==
-
-isbt-workspaces-meta@1.4.6:
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/isbt-workspaces-meta/-/isbt-workspaces-meta-1.4.6.tgz#2ca680339ca84c720d7cde967844e88b500756e4"
-  integrity sha512-bvVdocxLAa4cWwA569w5NNXQ0LXhL5r7nHMx+JHk9uYf2RSZ0caTo1Y4Uz89sl4bScosgGw+uSZXzKhPYIEEOA==
-  dependencies:
-    "@types/lodash" "^4.0.0"
-    fp-ts "^2.11.1"
-    globby "^11.0.0"
-    io-ts "^2.0.0"
-    isbt-ts "1.4.5"
-    lodash "^4.0.0"
-    mobx "^6.0.0"
-    read-pkg "^5.0.0"
-
-isbt@1.4.6:
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/isbt/-/isbt-1.4.6.tgz#b1dc2feb196c79e94db05efea9317e897d03cfee"
-  integrity sha512-9G6tlVkI2TeF90grNdDtLELJNUT75P8+OwkKOKg5lajA1KxLIXSEN0m9cBftEZHKBw1VS2/x40K+N8hnsWJA6Q==
-  dependencies:
-    "@types/node" ">=14"
-    fp-ts "^2.11.1"
-    isbt-ts "1.4.5"
-    isbt-workspaces-meta "1.4.6"
 
 isexe@^2.0.0:
   version "2.0.0"
