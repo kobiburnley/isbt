@@ -1,6 +1,6 @@
 {
   "name": "@isbt/core",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/cjs/index.d.ts",
@@ -17,7 +17,7 @@
   "dependencies": {
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
-    "@isbt/workspaces-meta": "1.6.0",
+    "@isbt/workspaces-meta": "1.7.0",
     "@lerna/cli": "^4.0.0",
     "@lerna/exec": "^4.0.0",
     "@types/jest": "^27.0.0",

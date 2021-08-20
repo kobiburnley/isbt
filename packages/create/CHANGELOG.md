@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/kobiburnley/isbt/compare/@isbt/create@1.1.0...@isbt/create@1.2.0) (2021-08-20)
+
+
+### Bug Fixes
+
+* remove exact from template release script ([f0ed565](https://github.com/kobiburnley/isbt/commit/f0ed5651c94d0d91500f297dc786ee3cb3590f3a))
+
+
+
+
+
 # 1.1.0 (2021-08-20)
 
 
