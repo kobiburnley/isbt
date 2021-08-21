@@ -16,7 +16,6 @@ jobs:
       - uses: actions/setup-node@v2.3.0
         with:
           cache: 'yarn'
-      - run: stat node_modules
       - run: yarn install --immutable
 
   build:
