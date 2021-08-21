@@ -9,6 +9,7 @@
     "isbt": "dist/cjs/index.js"
   },
   "files": [
+    ".eslintrc.base.js",
     "babel.config.js",
     "tsconfig.base.json",
     "dist/cjs",
@@ -21,6 +22,10 @@
     "@lerna/cli": "^4.0.0",
     "@lerna/exec": "^4.0.0",
     "@types/jest": "^27.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.0.0",
+    "@typescript-eslint/parser": "^4.0.0",
+    "eslint": "^7.0.0",
+    "eslint-plugin-import": "^2.0.0",
     "fp-error": "^1.0.0",
     "fp-ts": "^2.11.1",
     "husky": "^4.0.0",
