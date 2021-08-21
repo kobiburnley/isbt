@@ -23,6 +23,7 @@ jobs:
       - run: yarn run isbt
 
   test:
+    needs: install
     steps:
       - run: yarn workspaces run jest --passWithNoTests
 
