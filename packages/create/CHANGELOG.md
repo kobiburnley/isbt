@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/kobiburnley/isbt/compare/@isbt/create@1.2.0...@isbt/create@1.2.1) (2021-08-21)
+
+
+### Bug Fixes
+
+* `create` bin ([#19](https://github.com/kobiburnley/isbt/issues/19)) ([388cea2](https://github.com/kobiburnley/isbt/commit/388cea2303bf8f8d2bbab0e8ebc80509e850be92))
+
+
+
+
+
 # [1.2.0](https://github.com/kobiburnley/isbt/compare/@isbt/create@1.1.0...@isbt/create@1.2.0) (2021-08-20)
 
 
