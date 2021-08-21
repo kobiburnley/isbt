@@ -27,9 +27,8 @@ jobs:
       - uses: actions/setup-node@v2.3.0
         with:
           cache: 'yarn'
-      - run: yarn run isbt
-      - run: stat node_modules
       - run: yarn install --immutable
+      - run: yarn run isbt
 
   test:
     needs: install
@@ -39,6 +38,7 @@ jobs:
       - uses: actions/setup-node@v2.3.0
         with:
           cache: 'yarn'
+      - run: yarn install --immutable
       - run: yarn workspaces run jest --passWithNoTests
 
   publish:
@@ -48,4 +48,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2.3.0
+        with:
+          cache: 'yarn'
+      - run: yarn install --immutable
       - run: yarn release
