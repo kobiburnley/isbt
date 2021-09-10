@@ -1,6 +1,3 @@
-import { promises as fs } from 'fs'
-import path from 'path'
-
 import {
   EnvironmentStorageNode,
   FilesStorageNode,
@@ -9,8 +6,8 @@ import {
   WorkspacesState,
 } from '@isbt/workspaces-meta'
 import { exec } from 'child_process'
-import { isLeft } from 'fp-ts/Either'
-import { tryCatch } from 'fp-error'
+import { throwLeft } from 'fp-error'
+import { resolveBin } from './resolveBin'
 
 export async function build() {
   const state = new WorkspacesState({
@@ -37,26 +34,9 @@ export async function build() {
   await state.init()
   await state.submitTSConfig()
 
-  const tsPackageJSONPathEither = tryCatch(() =>
-    require.resolve('typescript/package.json', {
-      paths: [process.cwd()],
-    }),
+  const tscBin = await throwLeft(() =>
+    resolveBin('typescript', { script: 'tsc' }),
   )
-
-  if (isLeft(tsPackageJSONPathEither)) {
-    throw tsPackageJSONPathEither.left
-  }
-
-  const { right: tsPackageJSONPath } = tsPackageJSONPathEither
-
-  const tsPackagePath = path.dirname(tsPackageJSONPath)
-  const { bin } = JSON.parse(
-    (await fs.readFile(tsPackageJSONPath)).toString(),
-  )
-
-  const tscBin = require.resolve(bin.tsc, {
-    paths: [tsPackagePath],
-  })
 
   const tscCommand = [
     process.execPath,
