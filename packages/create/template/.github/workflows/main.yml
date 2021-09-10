@@ -45,12 +45,6 @@ jobs:
       - uses: actions/setup-node@v2.3.0
         with:
           cache: 'yarn'
-      - uses: actions/cache@v2
-        id: build-cache
-        with:
-          path: |
-            */*/dist
-          key: ${{ runner.os }}-${{ hashFiles('**/src/**/*.ts*') }}
       - run: yarn install --immutable
       - name: lint
         run: yarn workspaces run isbt lint . --passWithNoTests
