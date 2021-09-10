@@ -10,7 +10,7 @@
   },
   "files": [
     "eslint.config.base.js",
-    "babel.config.js",
+    "babel.config.base.js",
     "tsconfig.base.json",
     "dist/cjs",
     "dist/esm"
