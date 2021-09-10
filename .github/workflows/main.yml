@@ -26,9 +26,16 @@ jobs:
       - uses: actions/setup-node@v2.3.0
         with:
           cache: 'yarn'
+      - uses: actions/cache@v2
+        id: build-cache
+        with:
+          path: |
+            */*/dist
+          key: ${{ runner.os }}-${{ hashFiles('src/**/*.ts*') }}
       - run: yarn install --immutable
-      - run: yarn run isbt
-      - run: yarn workspaces run jest --passWithNoTests
+      - name: build
+        if: steps.build-cache.outputs.cache-hit != 'true'
+        run: yarn run isbt
 
   publish:
     needs: [build]
