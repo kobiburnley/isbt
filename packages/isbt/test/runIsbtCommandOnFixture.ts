@@ -16,7 +16,9 @@ export async function runIsbtCommandOnFixture(
     path.join(process.cwd(), 'src', 'index.ts'),
   )
 
-  const comonad = [process.execPath, tsNodeBin, isbtBin, command].join(' ')
+  const comonad = [process.execPath, tsNodeBin, '-T', isbtBin, command].join(
+    ' ',
+  )
 
   await new Promise<void>((resolve, reject) => {
     const tscProcess = exec(
