@@ -39,7 +39,7 @@ export class WorkspacesConfigState {
   }
 
   private getWorkspacesPatterns() {
-    const { workspaces } = this.packageJSON
+    const { workspaces = [] } = this.packageJSON
 
     if (Array.isArray(workspaces)) {
       return workspaces
