@@ -38,7 +38,7 @@ jobs:
         run: yarn run isbt
 
   test:
-    needs: install
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
