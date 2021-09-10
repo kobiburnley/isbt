@@ -6,12 +6,12 @@
   ],
   "scripts": {
     "build": "isbt",
-    "lint": "yarn workspaces run isbt lint . --passWithNoConfig",
+    "lint": "yarn workspaces run isbt lint . --passWithNoTests",
     "test": "yarn workspaces run jest",
     "release": "lerna publish --message \"Publish [skip ci]\" --exact --conventional-commits"
   },
   "devDependencies": {
-    "@isbt/core": "1.7.0"
+    "@isbt/core": "1.9.0"
   },
   "husky": {
     "hooks": {
