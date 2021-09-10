@@ -53,7 +53,6 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('src/**/*.ts*') }}
       - run: yarn install --immutable
       - name: test
-        if: steps.build-cache.outputs.cache-hit != 'true'
         run: yarn workspaces run jest --passWithNoTests
 
   publish:
