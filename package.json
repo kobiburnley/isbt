@@ -6,6 +6,7 @@
   ],
   "scripts": {
     "build": "isbt",
+    "lint": "yarn workspaces run isbt lint . --passWithNoConfig",
     "test": "yarn workspaces run jest",
     "release": "lerna publish --message \"Publish [skip ci]\" --exact --conventional-commits"
   },
