@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.1](https://github.com/kobiburnley/isbt/compare/@isbt/core@1.12.0...@isbt/core@1.12.1) (2021-09-10)
+
+
+### Bug Fixes
+
+* files ([5f0cad5](https://github.com/kobiburnley/isbt/commit/5f0cad52a3f26184260d00e13a36c6be4b3ef954))
+
+
+
+
+
 # [1.12.0](https://github.com/kobiburnley/isbt/compare/@isbt/core@1.11.0...@isbt/core@1.12.0) (2021-09-10)
 
 **Note:** Version bump only for package @isbt/core
