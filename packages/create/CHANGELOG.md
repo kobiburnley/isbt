@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/kobiburnley/isbt/compare/@isbt/create@1.3.0...@isbt/create@1.4.0) (2021-09-10)
+
+**Note:** Version bump only for package @isbt/create
+
+
+
+
+
 # [1.3.0](https://github.com/kobiburnley/isbt/compare/@isbt/create@1.2.1...@isbt/create@1.3.0) (2021-09-10)
 
 **Note:** Version bump only for package @isbt/create
