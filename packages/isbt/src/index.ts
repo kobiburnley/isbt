@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 import minimist from 'minimist'
-import { lint } from './lint'
-
 ;(async () => {
   const parsedArgs = minimist(process.argv.slice(2))
 

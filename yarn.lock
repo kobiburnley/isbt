@@ -965,30 +965,36 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@isbt/core@1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@isbt/core/-/core-1.7.0.tgz#abe36461adb854b13599c0da970ae511ab33b336"
-  integrity sha512-IoKh48RxRL0btzTz3FLeIaC9mP32GOsY/O4XJPDOMZKRnbjyBilM2NK48ltMB7o+lFSpy7A1aUCQ5e4VkZh5ZA==
+"@isbt/core@1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@isbt/core/-/core-1.9.0.tgz#411d68e6295140c4a94722a7064141f0ae665d27"
+  integrity sha512-kapxzisdmPsEWaT93Ah0qplw4YOl4d6QQaA3QfWg6e1SvXJiOfCDQXx6ZjyH4PygAh1ZMNgbkvzncjDDWOC30A==
   dependencies:
     "@babel/preset-env" "^7.0.0"
     "@babel/preset-typescript" "^7.0.0"
-    "@isbt/workspaces-meta" "1.6.0"
+    "@isbt/workspaces-meta" "1.8.0"
     "@lerna/cli" "^4.0.0"
     "@lerna/exec" "^4.0.0"
     "@types/jest" "^27.0.0"
+    "@types/minimist" "^1.0.0"
+    "@typescript-eslint/eslint-plugin" "^4.0.0"
+    "@typescript-eslint/parser" "^4.0.0"
+    eslint "^7.0.0"
+    eslint-plugin-import "^2.0.0"
     fp-error "^1.0.0"
     fp-ts "^2.11.1"
     husky "^4.0.0"
     jest "^27.0.0"
     lint-staged "^10.0.0"
+    minimist "^1.0.0"
     prettier "^2.0.0"
     tslib "^2.0.0"
     typescript "^4.0.0"
 
-"@isbt/workspaces-meta@1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@isbt/workspaces-meta/-/workspaces-meta-1.6.0.tgz#1629847fc93d9e858cf3049a34ab11f4e4d58bd6"
-  integrity sha512-/UaIZqJj5mAvYlBnR7CN35vMqs7xH+ViiJ8uStJoX1a6MZKR5WMY6OHPpM0r8BLpvYQciB9l/DLSePCXnQXpEA==
+"@isbt/workspaces-meta@1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@isbt/workspaces-meta/-/workspaces-meta-1.8.0.tgz#0878cd3a148a763cdba122901c94097961a8d211"
+  integrity sha512-CVnGvpZNCmtOe4CY73WSnlKKPWtdNCP+0gsdQZKFgoUqBQ5Bmbsc6cf7564JoNv+Gu4bzqDwEu0V8Y32e9RByQ==
   dependencies:
     fp-ts "^2.11.1"
     globby "^11.0.0"
@@ -2487,6 +2493,13 @@ eslint-plugin-import@^2.0.0:
     resolve "^1.20.0"
     tsconfig-paths "^3.10.1"
 
+eslint-plugin-prettier@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-4.0.0.tgz#8b99d1e4b8b24a762472b4567992023619cb98e0"
+  integrity sha512-98MqmCJ7vJodoQK359bqQWaxOE0CS8paAz/GgjaZLyex4TTk3g9HugoO89EqWCrFiOqn9EVvcoo7gZzONCWVwQ==
+  dependencies:
+    prettier-linter-helpers "^1.0.0"
+
 eslint-scope@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-5.1.1.tgz#e786e59a66cb92b3f6c1fb0d508aab174848f48c"
@@ -2664,6 +2677,11 @@ fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
+
+fast-diff@^1.1.2:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/fast-diff/-/fast-diff-1.2.0.tgz#73ee11982d86caaf7959828d519cfe927fac5f03"
+  integrity sha512-xJuoT5+L99XlZ8twedaRf6Ax2TgQVxvgZOYoPKqZufmJib0tL2tegPBOZb1pVNgIhlqDlA0eO0c3wBvQcmzx4w==
 
 fast-glob@^3.1.1:
   version "3.2.7"
@@ -4464,6 +4482,13 @@ prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
   integrity sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=
+
+prettier-linter-helpers@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/prettier-linter-helpers/-/prettier-linter-helpers-1.0.0.tgz#d23d41fe1375646de2d0104d3454a3008802cf7b"
+  integrity sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==
+  dependencies:
+    fast-diff "^1.1.2"
 
 prettier@^2.0.0:
   version "2.3.2"

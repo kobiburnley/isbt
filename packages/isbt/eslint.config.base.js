@@ -4,8 +4,13 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:import/recommended',
   ],
+  env: {
+    browser: true,
+    amd: true,
+    node: true,
+  },
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'import'],
+  plugins: ['@typescript-eslint', 'import', 'prettier'],
   rules: {
     'import/named': 0,
     'import/no-unresolved': 0,
@@ -19,6 +24,7 @@ module.exports = {
     ],
     '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/no-empty-interface': 0,
+    'prettier/prettier': 'error',
   },
   ignorePatterns: ['dist/**/*.js', '.eslintrc.js', 'babel.config.js'],
 }
