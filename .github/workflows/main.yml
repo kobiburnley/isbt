@@ -37,8 +37,27 @@ jobs:
         if: steps.build-cache.outputs.cache-hit != 'true'
         run: yarn run isbt
 
+  test:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2.3.0
+        with:
+          cache: 'yarn'
+      - uses: actions/cache@v2
+        id: build-cache
+        with:
+          path: |
+            */*/dist
+          key: ${{ runner.os }}-${{ hashFiles('src/**/*.ts*') }}
+      - run: yarn install --immutable
+      - name: test
+        if: steps.build-cache.outputs.cache-hit != 'true'
+        run: yarn workspaces run jest --passWithNoTests
+
   publish:
-    needs: [build]
+    needs: [build, test]
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, '[release]') }}
     steps:
@@ -46,5 +65,13 @@ jobs:
       - uses: actions/setup-node@v2.3.0
         with:
           cache: 'yarn'
+      - uses: actions/cache@v2
+        id: build-cache
+        with:
+          path: |
+            */*/dist
+          key: ${{ runner.os }}-${{ hashFiles('src/**/*.ts*') }}
       - run: yarn install --immutable
-      - run: yarn release
+      - name: publish
+        if: steps.build-cache.outputs.cache-hit == 'true'
+        run: yarn release
