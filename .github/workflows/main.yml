@@ -31,7 +31,7 @@ jobs:
         with:
           path: |
             */*/dist
-          key: ${{ runner.os }}-${{ hashFiles('src/**/*.ts*') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/src/**/*.ts*') }}
       - run: yarn install --immutable
       - name: build
         if: steps.build-cache.outputs.cache-hit != 'true'
@@ -50,7 +50,7 @@ jobs:
         with:
           path: |
             */*/dist
-          key: ${{ runner.os }}-${{ hashFiles('src/**/*.ts*') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/src/**/*.ts*') }}
       - run: yarn install --immutable
       - name: test
         run: yarn workspaces run jest --passWithNoTests
@@ -69,7 +69,7 @@ jobs:
         with:
           path: |
             */*/dist
-          key: ${{ runner.os }}-${{ hashFiles('src/**/*.ts*') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/src/**/*.ts*') }}
       - run: yarn install --immutable
       - name: publish
         if: steps.build-cache.outputs.cache-hit == 'true'
