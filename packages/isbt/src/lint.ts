@@ -1,8 +1,8 @@
 import { ParsedArgs } from 'minimist'
 import { exec } from 'child_process'
-import { throwLeft, tryCatchAsync } from 'fp-error'
+import { throwLeft, tryCatchAsync } from '@isbt/standard'
 import { resolveBin } from './resolveBin'
-import { isLeft } from 'fp-ts/Either'
+import { isLeft } from '@isbt/standard/Either'
 
 export async function lint(parsedArgs: ParsedArgs) {
   const { passWithNoTests } = parsedArgs

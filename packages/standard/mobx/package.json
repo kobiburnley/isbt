@@ -1,0 +1,6 @@
+{
+  "main": "../dist/cjs/exports/mobx.js",
+  "module": "../dist/esm/exports/mobx.js",
+  "types": "../dist/cjs/exports/mobx.d.ts",
+  "sideEffects": false
+}

@@ -1,0 +1,6 @@
+{
+  "main": "../dist/cjs/exports/io.js",
+  "module": "../dist/esm/exports/io.js",
+  "types": "../dist/cjs/exports/io.d.ts",
+  "sideEffects": false
+}

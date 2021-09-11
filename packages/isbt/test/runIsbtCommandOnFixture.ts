@@ -1,5 +1,5 @@
 import path from 'path'
-import { throwLeft } from 'fp-error'
+import { throwLeft } from '@isbt/standard'
 import { resolveBin } from '../src/resolveBin'
 import { exec } from 'child_process'
 
