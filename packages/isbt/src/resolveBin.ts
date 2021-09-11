@@ -1,7 +1,7 @@
 import path from 'path'
 import { promises as fs } from 'fs'
-import { tryCatch } from 'fp-error'
-import { isLeft } from 'fp-ts/Either'
+import { tryCatch } from '@isbt/standard'
+import { isLeft } from '@isbt/standard/Either'
 
 export async function resolveBin(
   packageName: string,

@@ -1,0 +1,6 @@
+{
+  "main": "../dist/cjs/exports/Either.js",
+  "module": "../dist/esm/exports/Either.js",
+  "types": "../dist/cjs/exports/Either.d.ts",
+  "sideEffects": false
+}

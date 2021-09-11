@@ -1,0 +1,6 @@
+{
+  "main": "../dist/cjs/exports/Option.js",
+  "module": "../dist/esm/exports/Option.js",
+  "types": "../dist/cjs/exports/Option.d.ts",
+  "sideEffects": false
+}

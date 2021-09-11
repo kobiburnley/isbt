@@ -6,7 +6,7 @@ import {
   WorkspacesState,
 } from '@isbt/workspaces-meta'
 import { exec } from 'child_process'
-import { throwLeft } from 'fp-error'
+import { throwLeft } from '@isbt/standard'
 import { resolveBin } from './resolveBin'
 
 export async function build() {
