@@ -8,6 +8,12 @@ export interface TSConfigReadOrCreateOptions {
   path: string
 }
 
+export interface GetProjectReferencePathOptions {
+  from: string;
+  to: string;
+  tsconfig: string
+}
+
 export interface TSConfigStorage {
   getRelativeExtends(cwd: string, options: { base: string }): Promise<string>
 
@@ -21,4 +27,6 @@ export interface TSConfigStorage {
     patches: Partial<TSConfig>[],
     options: TSConfigUpdateOrCreateOptions,
   ): Promise<TSConfig>
+
+  getProjectReferencePath(options: GetProjectReferencePathOptions): string;
 }
