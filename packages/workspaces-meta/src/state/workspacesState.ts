@@ -97,18 +97,31 @@ export class WorkspacesState {
   }
 
   async submitRootTSConfig() {
-    const { tsconfigStorage, customization } = this
+    const { tsconfigStorage, customization, cwd } = this
     const { tsconfig: tsconfigCustomization } = customization
-    const { outDir, esmName } = tsconfigCustomization
+    const { outDir, esmName, cjsName } = tsconfigCustomization
 
     const tsconfigDefaults = {
       compilerOptions: {
         outDir,
       },
       include: undefined,
-      references: this.workspaces.map((workspace) => ({
-        path: workspace.dir,
-      })),
+      references: this.workspaces.flatMap((workspace) => [
+        {
+          path: tsconfigStorage.getProjectReferencePath({
+            from: cwd,
+            to: workspace.dir,
+            tsconfig: `tsconfig.${esmName}.json`,
+          }),
+        },
+        {
+          path: tsconfigStorage.getProjectReferencePath({
+            from: cwd,
+            to: workspace.dir,
+            tsconfig: `tsconfig.${cjsName}.json`,
+          }),
+        },
+      ]),
     }
 
     await tsconfigStorage.updateOrCreate(

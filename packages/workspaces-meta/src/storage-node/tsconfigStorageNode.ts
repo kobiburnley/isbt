@@ -56,10 +56,10 @@ export class TSConfigStorageNode implements TSConfigStorage {
       existingOrEmpty,
       ...patches.map((patch) => ({
         ...patch,
-        references: patch?.references?.map((reference) => ({
-          path: reference.path.startsWith('.')
-            ? reference.path
-            : path.relative(cwd, path.join(reference.path, options.path)),
+        references:  patch?.references?.map((reference) => ({
+          path: path.isAbsolute(reference.path)
+            ? path.relative(cwd, path.join(reference.path, options.path))
+            : reference.path,
         })),
       })),
     )
