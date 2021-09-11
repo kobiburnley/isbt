@@ -1,7 +1,4 @@
 {
   "extends": "@isbt/core/tsconfig.base.json",
-  "include": [
-    "src",
-    "test"
-  ]
+  "include": ["src", "test"]
 }
