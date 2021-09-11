@@ -1,4 +1,5 @@
 import {
+  GetProjectReferencePathOptions,
   TSConfigReadOrCreateOptions,
   TSConfigStorage,
   TSConfigUpdateOrCreateOptions,
@@ -35,6 +36,14 @@ export class TSConfigStorageNode implements TSConfigStorage {
     return baseTSConfigPath.startsWith('.')
       ? baseTSConfigPath
       : `./${baseTSConfigPath}`
+  }
+
+  getProjectReferencePath({
+    from,
+    to,
+    tsconfig,
+  }: GetProjectReferencePathOptions) {
+    return path.relative(from, path.join(to, tsconfig))
   }
 
   async updateOrCreate(

@@ -186,11 +186,15 @@ export class WorkspaceState {
               module: 'esnext',
             },
             references: [
-              {
-                path: `./tsconfig.${cjsName}.json`,
-              },
               ...this.dependencies.map((workspace) => ({
                 path: workspace.dir,
+              })),
+              ...this.dependencies.flatMap((workspace) => ({
+                path: tsconfigStorage.getProjectReferencePath({
+                  from: dir,
+                  to: workspace.dir,
+                  tsconfig: `tsconfig.${cjsName}.json`,
+                }),
               })),
             ],
           },
