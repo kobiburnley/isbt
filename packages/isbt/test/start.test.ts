@@ -1,5 +1,5 @@
-import {runIsbtCommandOnFixture} from './runIsbtCommandOnFixture'
-import {PassThrough} from 'stream'
+import { runIsbtCommandOnFixture } from './runIsbtCommandOnFixture'
+import { PassThrough } from 'stream'
 
 jest.useFakeTimers()
 jest.setTimeout(15000)
