@@ -1,22 +1,36 @@
 import { runIsbtCommandOnFixture } from './runIsbtCommandOnFixture'
 import { PassThrough } from 'stream'
+import { EventEmitter } from 'events'
 
-jest.useFakeTimers()
 jest.setTimeout(15000)
 
 describe('start', () => {
-  it('runs command', async () => {
+  it.skip('runs command', async () => {
     const stdout = new PassThrough()
-    const noErrorsPromise = new Promise<void>((resolve) => {
+    const events = new EventEmitter()
+
+    const noErrorsPromise = new Promise<void>((resolve, reject) => {
       let data = ''
+
+      setTimeout(() => {
+        if (!data.includes('Found 0 errors. Watching for file changes.')) {
+          events.emit('kill')
+          reject(new Error(data))
+        }
+      }, 3000)
+
       stdout.on('data', (e) => {
         data += e.toString()
         if (data.includes('Found 0 errors. Watching for file changes.')) {
+          events.emit('kill')
           resolve()
         }
       })
     })
-    runIsbtCommandOnFixture('workspace-1', 'start', { stdout })
+    runIsbtCommandOnFixture('workspace-1', 'start', {
+      stdout,
+      events,
+    })
     await noErrorsPromise
   })
 })

@@ -2,11 +2,15 @@ import path from 'path'
 import { throwLeft } from 'fp-error'
 import { resolveBin } from '../src/resolveBin'
 import { exec } from 'child_process'
+import { EventEmitter } from 'events'
 
 export async function runIsbtCommandOnFixture(
   fixture: string,
   command: string,
-  { stdout = process.stdout }: { stdout?: NodeJS.WritableStream } = {},
+  {
+    stdout = process.stdout,
+    events,
+  }: { stdout?: NodeJS.WritableStream; events?: EventEmitter } = {},
 ) {
   const cwd = path.join(process.cwd(), 'test', 'fixtures', fixture)
 
@@ -22,7 +26,7 @@ export async function runIsbtCommandOnFixture(
   )
 
   await new Promise<void>((resolve, reject) => {
-    const tscProcess = exec(
+    const childProcess = exec(
       comonad,
       {
         cwd,
@@ -36,6 +40,10 @@ export async function runIsbtCommandOnFixture(
       },
     )
 
-    tscProcess.stdout?.pipe(stdout)
+    events?.once('kill', () => {
+      childProcess?.kill()
+    })
+
+    childProcess.stdout?.pipe(stdout)
   })
 }
