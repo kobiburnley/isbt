@@ -6,6 +6,7 @@ import { exec } from 'child_process'
 export async function runIsbtCommandOnFixture(
   fixture: string,
   command: string,
+  { stdout = process.stdout }: { stdout?: NodeJS.WritableStream } = {},
 ) {
   const cwd = path.join(process.cwd(), 'test', 'fixtures', fixture)
 
@@ -35,6 +36,6 @@ export async function runIsbtCommandOnFixture(
       },
     )
 
-    tscProcess.stdout?.pipe(process.stdout)
+    tscProcess.stdout?.pipe(stdout)
   })
 }

@@ -12,6 +12,9 @@ import minimist from 'minimist'
       case 'lint':
         await (await import('./lint')).lint(parsedArgs)
         break
+      case 'start':
+        await (await import('./start')).start()
+        break
       case 'build':
       default:
         await (await import('./build')).build()
