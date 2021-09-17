@@ -1,6 +1,5 @@
 import { runIsbtCommandOnFixture } from './runIsbtCommandOnFixture'
 
-jest.useFakeTimers()
 jest.setTimeout(15000)
 
 describe('build', () => {
