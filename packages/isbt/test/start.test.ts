@@ -1,5 +1,6 @@
 import { runIsbtCommandOnFixture } from './runIsbtCommandOnFixture'
 import { PassThrough } from 'stream'
+import { EventEmitter } from 'events'
 
 jest.useFakeTimers()
 jest.setTimeout(15000)
@@ -16,7 +17,12 @@ describe('start', () => {
         }
       })
     })
-    runIsbtCommandOnFixture('workspace-1', 'start', { stdout })
+    const events = new EventEmitter()
+    runIsbtCommandOnFixture('workspace-1', 'start', {
+      stdout,
+      events,
+    })
     await noErrorsPromise
+    events.emit('kill')
   })
 })
