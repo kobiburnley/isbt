@@ -6,7 +6,7 @@ import {
 } from '../storage'
 import { defaultsDeep } from 'lodash'
 import path from 'path'
-import { promises as fs, readFileSync } from 'fs-extra'
+import { promises as fs, readFileSync } from 'fs'
 import { TSConfig } from '../model'
 import { readConfigFile } from 'typescript'
 import { tryCatch } from 'fp-ts/TaskEither'
