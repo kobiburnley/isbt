@@ -144,7 +144,7 @@ export class WorkspaceState {
       include: [tsconfigCustomization.include[0]],
     }
 
-    const baseTsConfig = await tsconfigStorage.updateOrCreate(
+    await tsconfigStorage.updateOrCreate(
       dir,
       [
         {
@@ -162,11 +162,11 @@ export class WorkspaceState {
         dir,
         [
           tsconfigDefaults,
-          baseTsConfig,
           {
             compilerOptions: {
               outDir: `${outDir}/${cjsName}`,
-              target: 'es6',
+              target: 'ES6',
+              module: 'CommonJS',
             },
             references: this.dependencies.map((workspace) => ({
               path: workspace.dir,
@@ -181,12 +181,12 @@ export class WorkspaceState {
         dir,
         [
           tsconfigDefaults,
-          baseTsConfig,
           {
             compilerOptions: {
               ...tsconfigDefaults.compilerOptions,
               outDir: `${outDir}/${esmName}`,
-              module: 'esnext',
+              target: 'ES5',
+              module: 'ESNext',
             },
             references: this.dependencies.flatMap((workspace) => [
               {

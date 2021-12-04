@@ -14,7 +14,7 @@
     "release": "lerna publish --message \"Publish [skip ci]\" --exact --conventional-commits"
   },
   "devDependencies": {
-    "@isbt/core": "rc"
+    "@isbt/core": "1.15.0"
   },
   "husky": {
     "hooks": {
