@@ -5,6 +5,7 @@ import globby from 'globby'
 
 export async function bundle() {
   const platforms: Platform[] = ['neutral', 'browser', 'node']
+
   const bundlesDir = path.join(process.cwd(), 'src', 'bundles')
 
   await Promise.all(
@@ -12,16 +13,21 @@ export async function bundle() {
       const platformBundlesDir = path.join(bundlesDir, platform)
 
       const bundleFiles = await globby('**/*.ts', {
-        absolute: true,
+        absolute: false,
         cwd: platformBundlesDir,
       })
 
       await Promise.all(
         bundleFiles.map(async (bundleFile) => {
+          const { name } = path.parse(bundleFile)
+
           await build({
-            entryPoints: [bundleFile],
+            entryPoints: [path.join(platformBundlesDir, bundleFile)],
             bundle: true,
             platform,
+            target: [platform === 'node' ? 'node12' : 'es5'],
+            outfile: path.join('dist', 'bundles', platform, `${name}.js`),
+            sourcemap: true,
           })
         }),
       )
