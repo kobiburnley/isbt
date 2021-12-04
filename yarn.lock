@@ -965,25 +965,27 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@isbt/core@1.15.0":
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/@isbt/core/-/core-1.15.0.tgz#e6c237e70160d71df5dff9b86e43e1b41458981d"
-  integrity sha512-f6L89UWJAUc7zK+JhJiUH7K7ez/lgroHStS9+584NhCWl97kjxVjJJ/j24I85WK6L2MM3UBIGPfnGnYP2TQLkw==
+"@isbt/core@rc":
+  version "1.16.1-rc.1"
+  resolved "https://registry.yarnpkg.com/@isbt/core/-/core-1.16.1-rc.1.tgz#6e22c3c29e6fb8cb1ec24b75663b08d3ca827116"
+  integrity sha512-zUzxChbLvy6WyGW73IBCH4HZ1ehNX2QyxYq7vPKFbYeOXlKl6Y5H97yiyqa/eQLT3Zrfrk0k5FYE450oGqN7uQ==
   dependencies:
     "@babel/preset-env" "^7.0.0"
     "@babel/preset-typescript" "^7.0.0"
-    "@isbt/workspaces-meta" "1.14.0"
+    "@isbt/workspaces-meta" "1.15.1-rc.1+31f3c6e"
     "@lerna/cli" "^4.0.0"
     "@lerna/exec" "^4.0.0"
     "@types/jest" "^27.0.0"
     "@types/minimist" "^1.0.0"
     "@typescript-eslint/eslint-plugin" "^4.0.0"
     "@typescript-eslint/parser" "^4.0.0"
+    esbuild ">=0.14.0"
     eslint "^7.0.0"
     eslint-plugin-import "^2.0.0"
     eslint-plugin-prettier "^4.0.0"
     fp-error "^1.0.0"
     fp-ts "^2.11.1"
+    globby "^11.0.0"
     husky "^4.0.0"
     jest "^27.0.0"
     lint-staged "^10.0.0"
@@ -992,10 +994,10 @@
     tslib "^2.0.0"
     typescript "^4.0.0"
 
-"@isbt/workspaces-meta@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@isbt/workspaces-meta/-/workspaces-meta-1.14.0.tgz#946e75af5bf5c43f89d4ded784bc5bd6460b3bce"
-  integrity sha512-qPpn9pf29nNVQT3uoS2A3DTdLaoxAHOUiSqPhUgLMjdjj9ee2z08tNK8W6cYEOLvYX5udGsq8XOX9ocmuXLmVQ==
+"@isbt/workspaces-meta@1.15.1-rc.1+31f3c6e":
+  version "1.15.1-rc.1"
+  resolved "https://registry.yarnpkg.com/@isbt/workspaces-meta/-/workspaces-meta-1.15.1-rc.1.tgz#16e04517f066a750517ebe368b4ffe94f8914528"
+  integrity sha512-0GrbjGCkFk0m1OVetAjhXRkhA4Uw6Lk2ByzUFjJGfb2vktBWwUca8ahBaf7BBJP5FOudKLS/1ZtlK6UvcWkfkw==
   dependencies:
     fp-ts "^2.11.1"
     globby "^11.0.0"
