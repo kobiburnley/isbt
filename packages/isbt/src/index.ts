@@ -13,7 +13,11 @@ import minimist from 'minimist'
         await (await import('./lint')).lint(parsedArgs)
         break
       case 'start':
+      case 'watch':
         await (await import('./start')).start()
+        break
+      case 'bundle':
+        await (await import('./bundle')).bundle()
         break
       case 'build':
       default:

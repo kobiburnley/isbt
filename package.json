@@ -5,9 +5,11 @@
     "packages/*"
   ],
   "scripts": {
+    "start": "isbt start",
     "build": "isbt",
     "lint": "yarn workspaces run isbt lint . --passWithNoTests",
     "test": "yarn workspaces run jest  --passWithNoTests",
+    "version": "lerna version --message \"Publish [skip ci]\" --exact --conventional-commits --no-git-tag-version --no-push",
     "release": "lerna publish --message \"Publish [skip ci]\" --exact --conventional-commits"
   },
   "devDependencies": {
