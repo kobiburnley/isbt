@@ -48,6 +48,7 @@ export async function bundle() {
                   `${name}${ext}.js`,
                 ),
                 sourcemap: true,
+                sourcesContent: false,
                 minify,
                 treeShaking: true,
               })

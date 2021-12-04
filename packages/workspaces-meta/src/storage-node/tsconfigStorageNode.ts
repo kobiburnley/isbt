@@ -6,38 +6,52 @@ import {
 } from '../storage'
 import { defaultsDeep } from 'lodash'
 import path from 'path'
-import { promises as fs, readFileSync } from 'fs'
+import { promises as fs, readFileSync } from 'fs-extra'
 import { TSConfig } from '../model'
 import { readConfigFile } from 'typescript'
+import { tryCatch } from 'fp-ts/TaskEither'
+import { isLeft } from 'fp-ts/Either'
 
 export class TSConfigStorageNode implements TSConfigStorage {
+  private async writeEmptyTsConfig(
+    cwd: string,
+    options: TSConfigReadOrCreateOptions,
+  ) {
+    const tsconfig: TSConfig = {}
+
+    await fs.writeFile(
+      path.join(cwd, options.path),
+      JSON.stringify(tsconfig, null, 2),
+    )
+
+    return tsconfig
+  }
+
   async readOrCreate(
     cwd: string,
     options: TSConfigReadOrCreateOptions,
   ): Promise<TSConfig> {
-    try {
-      const { config, error } = readConfigFile(
-        path.join(cwd, options.path),
-        (path1) => readFileSync(path1, 'utf8'),
-      )
+    const tsConfigPath = path.join(cwd, options.path)
 
-      if (error) {
-        throw error
-      }
+    const tsConfigStatEither = await tryCatch(
+      () => fs.stat(tsConfigPath),
+      (e) => e,
+    )()
 
-      return config
-    } catch (e) {
-      console.log(e)
-
-      const tsconfig: TSConfig = {}
-
-      await fs.writeFile(
-        path.join(cwd, options.path),
-        JSON.stringify(tsconfig, null, 2),
-      )
-
-      return tsconfig
+    if (isLeft(tsConfigStatEither)) {
+      return this.writeEmptyTsConfig(cwd, options)
     }
+
+    const { config, error } = readConfigFile(tsConfigPath, (path1) =>
+      readFileSync(path1, 'utf8'),
+    )
+
+    if (error != null) {
+      console.log(error)
+      return this.writeEmptyTsConfig(cwd, options)
+    }
+
+    return config
   }
 
   async getRelativeExtends(cwd: string, options: { base: string }) {

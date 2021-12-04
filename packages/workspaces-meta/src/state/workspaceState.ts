@@ -167,6 +167,7 @@ export class WorkspaceState {
             compilerOptions: {
               outDir: `${outDir}/${cjsName}`,
               target: 'es6',
+              module: 'CommonJS',
             },
             references: this.dependencies.map((workspace) => ({
               path: workspace.dir,
@@ -186,7 +187,7 @@ export class WorkspaceState {
             compilerOptions: {
               ...tsconfigDefaults.compilerOptions,
               outDir: `${outDir}/${esmName}`,
-              module: 'esnext',
+              module: 'ESNext',
             },
             references: this.dependencies.flatMap((workspace) => [
               {
