@@ -1,0 +1,10 @@
+{
+  "extends": "@isbt/core/tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react"
+  },
+  "include": [
+    "src",
+    "test"
+  ]
+}
