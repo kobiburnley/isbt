@@ -4,7 +4,7 @@ import * as process from 'process'
 import globby from 'globby'
 
 export async function bundle() {
-  const platforms: Platform[] = ['neutral', 'browser', 'node']
+  const platforms: Platform[] = ['browser', 'node']
 
   const bundlesDir = path.join(process.cwd(), 'src', 'bundles')
 
@@ -38,19 +38,20 @@ export async function bundle() {
             variations.map(async ({ minify, ext }) => {
               await build({
                 entryPoints: [path.join(platformBundlesDir, bundleFile)],
+                entryNames:
+                  platform === 'browser'
+                    ? `[dir]/[name]${ext}.[hash]`
+                    : `[dir]/[name]${ext}`,
                 bundle: true,
                 platform,
                 target: [platform === 'node' ? 'node12' : 'es5'],
-                outfile: path.join(
-                  'dist',
-                  'bundles',
-                  platform,
-                  `${name}${ext}.js`,
-                ),
+                outdir: path.join('dist', 'bundles', platform, name),
                 sourcemap: true,
                 sourcesContent: false,
                 minify,
                 treeShaking: true,
+                splitting: platform !== 'node',
+                format: platform === 'browser' ? 'esm' : 'cjs',
               })
             }),
           )
