@@ -6,7 +6,7 @@ export const TSConfig = io.partial({
     outDir: io.string,
     rootDir: io.string,
     module: io.union([io.literal('ESNext'), io.literal('CommonJS')]),
-    target: io.union([io.literal('es5'), io.literal('es6')]),
+    target: io.union([io.literal('ES5'), io.literal('ES6')]),
   }),
   include: io.array(io.string),
   exclude: io.array(io.string),
