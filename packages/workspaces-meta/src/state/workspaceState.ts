@@ -144,7 +144,7 @@ export class WorkspaceState {
       include: [tsconfigCustomization.include[0]],
     }
 
-    const baseTsConfig = await tsconfigStorage.updateOrCreate(
+    const { compilerOptions } = await tsconfigStorage.updateOrCreate(
       dir,
       [
         {
@@ -162,7 +162,7 @@ export class WorkspaceState {
         dir,
         [
           tsconfigDefaults,
-          baseTsConfig,
+          { compilerOptions },
           {
             compilerOptions: {
               outDir: `${outDir}/${cjsName}`,
@@ -182,7 +182,7 @@ export class WorkspaceState {
         dir,
         [
           tsconfigDefaults,
-          baseTsConfig,
+          { compilerOptions },
           {
             compilerOptions: {
               ...tsconfigDefaults.compilerOptions,
