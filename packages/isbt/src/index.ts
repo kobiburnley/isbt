@@ -13,7 +13,11 @@ import minimist from 'minimist'
         await (await import('./lint')).lint(parsedArgs)
         break
       case 'start':
+      case 'watch':
         await (await import('./start')).start()
+        break
+      case 'bundle':
+        await (await import('./bundle')).bundle()
         break
       case 'build':
       default:
@@ -21,7 +25,7 @@ import minimist from 'minimist'
         break
     }
   } catch (e) {
-    console.error(e)
+    console.error('\nisbt exited with error:\n', e)
     process.exitCode = 1
   }
 })()

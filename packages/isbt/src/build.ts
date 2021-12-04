@@ -62,5 +62,6 @@ export async function build() {
     )
 
     tscProcess.stdout?.pipe(process.stdout)
+    tscProcess.stderr?.pipe(process.stderr)
   })
 }
