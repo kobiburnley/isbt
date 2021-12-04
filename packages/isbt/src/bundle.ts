@@ -16,10 +16,15 @@ export async function bundle() {
         cwd: platformBundlesDir,
       })
 
-      await build({
-        entryPoints: bundleFiles,
-        platform: 'node',
-      })
+      await Promise.all(
+        bundleFiles.map(async (bundleFile) => {
+          await build({
+            entryPoints: [bundleFile],
+            bundle: true,
+            platform,
+          })
+        }),
+      )
     }),
   )
 }
