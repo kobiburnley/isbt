@@ -5,15 +5,10 @@ import { isLeft } from 'fp-ts/Either'
 
 export async function resolveBin(
   packageName: string,
-  {
-    script = packageName,
-    cwd = process.cwd(),
-  }: { cwd?: string; script?: string } = {},
+  { script = packageName }: { script?: string } = {},
 ) {
   const packageJSONPathEither = tryCatch(() =>
-    require.resolve(`${packageName}/package.json`, {
-      paths: [cwd],
-    }),
+    require.resolve(`${packageName}/package.json`),
   )
 
   if (isLeft(packageJSONPathEither)) {

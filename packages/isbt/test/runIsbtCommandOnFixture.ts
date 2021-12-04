@@ -14,7 +14,7 @@ export async function runIsbtCommandOnFixture(
 ) {
   const cwd = path.join(process.cwd(), 'test', 'fixtures', fixture)
 
-  const tsNodeBin = await throwLeft(() => resolveBin('ts-node', { cwd }))
+  const tsNodeBin = await throwLeft(() => resolveBin('ts-node'))
 
   const isbtBin = path.relative(
     cwd,
