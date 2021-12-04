@@ -6,7 +6,7 @@
   ],
   "scripts": {
     "start": "isbt start",
-    "build": "isbt",
+    "build": "isbt build",
     "lint": "yarn workspaces run isbt lint . --passWithNoTests",
     "test": "yarn workspaces run jest  --passWithNoTests",
     "release:no-git": "yarn release --force-publish",
