@@ -6,8 +6,9 @@ import {
 } from '../storage'
 import { defaultsDeep } from 'lodash'
 import path from 'path'
-import { promises as fs } from 'fs'
+import { promises as fs, readFileSync } from 'fs'
 import { TSConfig } from '../model'
+import { readConfigFile } from 'typescript'
 
 export class TSConfigStorageNode implements TSConfigStorage {
   async readOrCreate(
@@ -15,10 +16,19 @@ export class TSConfigStorageNode implements TSConfigStorage {
     options: TSConfigReadOrCreateOptions,
   ): Promise<TSConfig> {
     try {
-      return require(require.resolve(options.path, {
-        paths: [cwd],
-      }))
-    } catch (_) {
+      const { config, error } = readConfigFile(
+        path.join(cwd, options.path),
+        (path1) => readFileSync(path1, 'utf8'),
+      )
+
+      if (error) {
+        throw error
+      }
+
+      return config
+    } catch (e) {
+      console.log(e)
+
       const tsconfig: TSConfig = {}
 
       await fs.writeFile(
@@ -56,7 +66,7 @@ export class TSConfigStorageNode implements TSConfigStorage {
       existingOrEmpty,
       ...patches.map((patch) => ({
         ...patch,
-        references:  patch?.references?.map((reference) => ({
+        references: patch?.references?.map((reference) => ({
           path: path.isAbsolute(reference.path)
             ? path.relative(cwd, path.join(reference.path, options.path))
             : reference.path,

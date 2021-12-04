@@ -1,0 +1,6 @@
+{
+  "name": "bundle-node",
+  "dependencies": {
+    "esbuild": "^0.14.2"
+  }
+}

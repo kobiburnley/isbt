@@ -4,6 +4,12 @@ jest.setTimeout(15000)
 
 describe('bundle', () => {
   it('runs command', async () => {
-    await runIsbtCommandOnFixture('bundle-node', 'bundle')
+    await Promise.all([
+      runIsbtCommandOnFixture('bundle-node/packages/bundle-node', 'bundle'),
+      runIsbtCommandOnFixture(
+        'bundle-browser/packages/bundle-browser',
+        'bundle',
+      ),
+    ])
   })
 })

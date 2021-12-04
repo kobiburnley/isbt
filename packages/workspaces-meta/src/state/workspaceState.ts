@@ -144,27 +144,29 @@ export class WorkspaceState {
       include: [tsconfigCustomization.include[0]],
     }
 
+    const baseTsConfig = await tsconfigStorage.updateOrCreate(
+      dir,
+      [
+        {
+          extends: tsconfigCustomization.extends,
+          include: tsconfigCustomization.include,
+        },
+      ],
+      {
+        path: tsconfigCustomization.base,
+      },
+    )
+
     await Promise.all([
       tsconfigStorage.updateOrCreate(
         dir,
         [
-          {
-            extends: tsconfigCustomization.extends,
-            include: tsconfigCustomization.include,
-          },
-        ],
-        {
-          path: tsconfigCustomization.base,
-        },
-      ),
-
-      tsconfigStorage.updateOrCreate(
-        dir,
-        [
           tsconfigDefaults,
+          baseTsConfig,
           {
             compilerOptions: {
               outDir: `${outDir}/${cjsName}`,
+              target: 'es6',
             },
             references: this.dependencies.map((workspace) => ({
               path: workspace.dir,
@@ -179,6 +181,7 @@ export class WorkspaceState {
         dir,
         [
           tsconfigDefaults,
+          baseTsConfig,
           {
             compilerOptions: {
               ...tsconfigDefaults.compilerOptions,

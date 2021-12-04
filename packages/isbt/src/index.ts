@@ -25,7 +25,7 @@ import minimist from 'minimist'
         break
     }
   } catch (e) {
-    console.error(e)
+    console.error('\nisbt exited with error:\n', e)
     process.exitCode = 1
   }
 })()

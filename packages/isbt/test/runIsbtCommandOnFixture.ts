@@ -33,17 +33,17 @@ export async function runIsbtCommandOnFixture(
       },
       (error) => {
         if (error) {
-          reject(new Error(error.message))
+          reject(error)
         } else {
           resolve()
         }
       },
     )
 
+    childProcess.stdout?.pipe(stdout)
+
     events?.once('kill', () => {
       childProcess?.kill()
     })
-
-    childProcess.stdout?.pipe(stdout)
   })
 }

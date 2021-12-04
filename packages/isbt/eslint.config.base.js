@@ -26,10 +26,5 @@ module.exports = {
     '@typescript-eslint/no-empty-interface': 0,
     'prettier/prettier': 'error',
   },
-  ignorePatterns: [
-    'dist/**/*',
-    'test/fixtures/*/dist/**/*',
-    '.eslintrc.js',
-    'babel.config.js',
-  ],
+  ignorePatterns: ['/**/dist/**/*', '.eslintrc.js', 'babel.config.js'],
 }
