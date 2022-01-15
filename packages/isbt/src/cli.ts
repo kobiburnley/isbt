@@ -1,6 +1,6 @@
-#!/usr/bin/env node
 import minimist from 'minimist'
-;(async () => {
+
+export const main = async () => {
   const parsedArgs = minimist(process.argv.slice(2))
 
   const {
@@ -21,11 +21,11 @@ import minimist from 'minimist'
         break
       case 'build':
       default:
-        await (await import('./build')).build()
+        await (await import('./build-and-bundle')).buildAndBundle()
         break
     }
   } catch (e) {
     console.error('\nisbt exited with error:\n', e)
     process.exitCode = 1
   }
-})()
+}

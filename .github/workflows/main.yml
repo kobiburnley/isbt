@@ -47,7 +47,7 @@ jobs:
           cache: 'yarn'
       - run: yarn install --immutable
       - name: lint
-        run: yarn workspaces run isbt lint . --passWithNoTests
+        run: yarn workspaces foreach run isbt lint . --passWithNoTests
 
   test:
     needs: build
@@ -65,7 +65,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/src/**/*.ts*') }}
       - run: yarn install --immutable
       - name: test
-        run: yarn workspaces run jest --passWithNoTests
+        run: yarn workspaces foreach run jest --passWithNoTests
 
   publish:
     needs: [build, test]
