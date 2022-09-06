@@ -5,6 +5,7 @@ import minimist from 'minimist'
 
   const {
     _: [command],
+    dev,
   } = parsedArgs
 
   try {
@@ -17,7 +18,7 @@ import minimist from 'minimist'
         await (await import('./start')).start()
         break
       case 'bundle':
-        await (await import('./bundle')).bundle()
+        await (await import('./bundle')).bundle({ dev: Boolean(dev) })
         break
       case 'build':
       default:
