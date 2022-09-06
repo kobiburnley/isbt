@@ -7,6 +7,7 @@ interface BuildVariant {
   env: string
   ext: string
   minify: boolean
+  watch: boolean
 }
 
 export async function bundle({ dev }: { dev?: boolean } = {}) {
@@ -30,6 +31,7 @@ export async function bundle({ dev }: { dev?: boolean } = {}) {
           const createBuildOptions = ({
             minify,
             ext,
+            watch,
           }: BuildVariant): BuildOptions => {
             return {
               entryPoints: [path.join(platformBundlesDir, bundleFile)],
@@ -53,16 +55,18 @@ export async function bundle({ dev }: { dev?: boolean } = {}) {
 
           await build(
             createBuildOptions(
-              watch
+              dev
                 ? {
                     env: 'development',
                     ext: '.development',
                     minify: false,
+                    watch: true,
                   }
                 : {
                     env: 'production',
                     ext: '',
                     minify: true,
+                    watch: false,
                   },
             ),
           )
