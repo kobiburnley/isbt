@@ -6,6 +6,7 @@ import minimist from 'minimist'
   const {
     _: [command],
     dev,
+    serve,
   } = parsedArgs
 
   try {
@@ -18,7 +19,14 @@ import minimist from 'minimist'
         await (await import('./start')).start()
         break
       case 'bundle':
-        await (await import('./bundle')).bundle({ dev: Boolean(dev) })
+        await (
+          await import('./bundle')
+        ).bundle({
+          dev: Boolean(dev),
+          serve: Array.isArray(serve)
+            ? new Set(serve.map(String))
+            : new Set([String(serve)]),
+        })
         break
       case 'build':
       default:
