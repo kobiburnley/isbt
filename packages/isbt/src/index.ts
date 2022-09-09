@@ -23,9 +23,11 @@ import minimist from 'minimist'
           await import('./bundle')
         ).bundle({
           dev: Boolean(dev),
-          serve: Array.isArray(serve)
-            ? new Set(serve.map(String))
-            : new Set([String(serve)]),
+          serve: new Set(
+            (Array.isArray(serve) ? serve : [serve])
+              .filter(Boolean)
+              .map(String),
+          ),
         })
         break
       case 'build':
