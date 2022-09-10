@@ -10,7 +10,12 @@ export async function runIsbtCommandOnFixture(
   {
     stdout = process.stdout,
     events,
-  }: { stdout?: NodeJS.WritableStream; events?: EventEmitter } = {},
+    flags = [],
+  }: {
+    stdout?: NodeJS.WritableStream
+    events?: EventEmitter
+    flags?: string[]
+  } = {},
 ) {
   const cwd = path.join(process.cwd(), 'test', 'fixtures', fixture)
 
@@ -24,7 +29,7 @@ export async function runIsbtCommandOnFixture(
 
   await new Promise<void>((resolve, reject) => {
     const childProcess = exec(
-      comonad,
+      [comonad, ...flags].join(' '),
       {
         cwd,
       },
