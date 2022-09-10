@@ -86,7 +86,7 @@ jobs:
   publish:
     needs: [build, test]
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, 'Publish') }}
+    if: ${{ github.ref == 'refs/heads/main' && github.event.head_commit.message == 'Publish' }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
