@@ -8,8 +8,6 @@ import minimist from 'minimist'
     root,
   } = parsedArgs
 
-  console.log({ root })
-
   try {
     switch (command) {
       case 'start':
