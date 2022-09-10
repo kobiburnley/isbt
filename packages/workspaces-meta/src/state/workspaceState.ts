@@ -143,7 +143,7 @@ export class WorkspaceState {
       },
       include: [
         tsconfigCustomization.rootDir,
-        `"${tsconfigCustomization.rootDir}/**/*.json"`,
+        `${tsconfigCustomization.rootDir}/**/*.json`,
       ],
     }
 
