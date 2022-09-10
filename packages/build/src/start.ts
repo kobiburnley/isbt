@@ -17,6 +17,7 @@ export async function start(params: Partial<WorkspacesStateParams> = {}) {
     environmentStorage: new EnvironmentStorageNode(),
     packageJSONStorage: new PackageJSONStorageNode(),
     tsconfigStorage: new TSConfigStorageNode(),
+    ...params,
     customization: {
       ...defaultCustomization,
       ...params.customization,
