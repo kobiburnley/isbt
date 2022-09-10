@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import minimist from 'minimist'
+import { defaultCustomization } from './defaultCustomization'
 ;(async () => {
   const parsedArgs = minimist(process.argv.slice(2))
 
@@ -16,7 +17,11 @@ import minimist from 'minimist'
         break
       case 'start':
       case 'watch':
-        await (await import('./start')).start()
+        await (
+          await import('@isbt/build')
+        ).start({
+          customization: defaultCustomization,
+        })
         break
       case 'bundle':
         await (
@@ -32,7 +37,11 @@ import minimist from 'minimist'
         break
       case 'build':
       default:
-        await (await import('@isbt/build')).build()
+        await (
+          await import('@isbt/build')
+        ).build({
+          customization: defaultCustomization,
+        })
         break
     }
   } catch (e) {

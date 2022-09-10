@@ -1,5 +1,5 @@
 {
-  "extends": "@isbt/core/tsconfig.base.json",
+  "extends": "@isbt/build/tsconfig.base.json",
   "compilerOptions": {
     "jsx": "react"
   },
