@@ -40,17 +40,16 @@ export async function build(params: Partial<WorkspacesStateParams> = {}) {
     `--build tsconfig.${tsconfig.esmName}.json`,
   ].join(' ')
 
-  if (state.root) {
-    console.log(`Starting from root package: ${state.root}`)
-  }
+  const cwd = state.rootWorkspace?.dir ?? process.cwd()
 
+  console.log(`Building from directory ${cwd}`)
   console.log(`> ${tscCommand}`)
 
   await new Promise<void>((resolve, reject) => {
     const tscProcess = exec(
       tscCommand,
       {
-        cwd: process.cwd(),
+        cwd,
       },
       (error) => {
         if (error) {

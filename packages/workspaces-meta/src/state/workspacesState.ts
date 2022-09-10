@@ -51,6 +51,7 @@ export class WorkspacesState {
       cwd: observable.ref,
       root: observable.ref,
       workspaces: computed,
+      rootWorkspace: computed,
       submitTSConfig: action,
       submitRootTSConfig: action,
       effectiveWorkspaces: computed,
@@ -61,17 +62,23 @@ export class WorkspacesState {
     return Array.from(this.workspacesMap.values())
   }
 
-  get effectiveWorkspaces() {
-    const { root, workspaces, workspacesMap } = this
-    if (root) {
-      const rootWorkspace = workspacesMap.get(root)
+  get rootWorkspace() {
+    const { root, workspacesMap } = this
 
-      if (rootWorkspace) {
-        const { dependenciesDeep } = rootWorkspace
-        return workspaces.filter(
-          (w) => w.name === root || dependenciesDeep.has(w.name),
-        )
-      }
+    if (root) {
+      return workspacesMap.get(root)
+    }
+
+    return null
+  }
+
+  get effectiveWorkspaces() {
+    const { root, workspaces, rootWorkspace } = this
+    if (rootWorkspace) {
+      const { dependenciesDeep } = rootWorkspace
+      return workspaces.filter(
+        (w) => w.name === root || dependenciesDeep.has(w.name),
+      )
     }
     return workspaces
   }
@@ -133,7 +140,7 @@ export class WorkspacesState {
   }
 
   async submitRootTSConfig() {
-    const { tsconfigStorage, customization, cwd, effectiveWorkspaces } = this
+    const { tsconfigStorage, customization, cwd, workspaces } = this
     const { tsconfig: tsconfigCustomization } = customization
     const { outDir, esmName, cjsName } = tsconfigCustomization
 
@@ -142,7 +149,7 @@ export class WorkspacesState {
         outDir,
       },
       include: undefined,
-      references: effectiveWorkspaces.flatMap((workspace) => [
+      references: workspaces.flatMap((workspace) => [
         {
           path: tsconfigStorage.getProjectReferencePath({
             from: cwd,
@@ -177,10 +184,10 @@ export class WorkspacesState {
   }
 
   async submitTSConfig() {
-    const { effectiveWorkspaces } = this
+    const { workspaces } = this
     await Promise.all([
       this.submitRootTSConfig(),
-      ...effectiveWorkspaces.map((workspace) => workspace.submitTSConfig()),
+      ...workspaces.map((workspace) => workspace.submitTSConfig()),
     ])
   }
 }
