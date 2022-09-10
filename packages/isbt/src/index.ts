@@ -32,7 +32,7 @@ import minimist from 'minimist'
         break
       case 'build':
       default:
-        await (await import('./build')).build()
+        await (await import('@isbt/build')).build()
         break
     }
   } catch (e) {
