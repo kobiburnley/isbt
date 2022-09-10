@@ -11,6 +11,7 @@ import { TSConfig } from '../model'
 import { readConfigFile } from 'typescript'
 import { tryCatch } from 'fp-ts/TaskEither'
 import { isLeft } from 'fp-ts/Either'
+import { jsonFileStringify } from '../util/jsonFileStringify'
 
 export class TSConfigStorageNode implements TSConfigStorage {
   private async writeEmptyTsConfig(
@@ -21,7 +22,7 @@ export class TSConfigStorageNode implements TSConfigStorage {
 
     await fs.writeFile(
       path.join(cwd, options.path),
-      JSON.stringify(tsconfig, null, 2),
+      await jsonFileStringify(tsconfig),
     )
 
     return tsconfig
@@ -90,7 +91,7 @@ export class TSConfigStorageNode implements TSConfigStorage {
 
     await fs.writeFile(
       path.join(cwd, options.path),
-      JSON.stringify(newTSConfig, null, 2),
+      await jsonFileStringify(newTSConfig),
     )
 
     return newTSConfig
