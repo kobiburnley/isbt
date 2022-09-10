@@ -13,6 +13,9 @@
     "dist/esm",
     "tsconfig.base.json"
   ],
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "@isbt/workspaces-meta": "1.17.0",
     "fp-error": "^1.0.0",

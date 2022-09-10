@@ -1,0 +1,8 @@
+{
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "../../../../../node_modules/.bin/ts-node -T --skip-project ../../../src/bin.ts build"
+  }
+}

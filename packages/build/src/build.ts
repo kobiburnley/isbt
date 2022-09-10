@@ -4,28 +4,24 @@ import {
   PackageJSONStorageNode,
   TSConfigStorageNode,
   WorkspacesState,
+  WorkspacesStateParams,
 } from '@isbt/workspaces-meta'
 import { exec } from 'child_process'
 import { throwLeft } from 'fp-error'
 import { resolveBin } from './resolveBin'
+import { defaultCustomization } from './defaultCustomization'
 
-export async function build() {
+export async function build(params: Partial<WorkspacesStateParams> = {}) {
   const state = new WorkspacesState({
-    customization: {
-      tsconfig: {
-        extends: '@isbt/build/tsconfig.base.json',
-        base: 'tsconfig.json',
-        outDir: 'dist',
-        rootDir: 'src',
-        include: ['src', 'test'],
-        cjsName: 'cjs',
-        esmName: 'esm',
-      },
-    },
     filesStorage: new FilesStorageNode(),
     environmentStorage: new EnvironmentStorageNode(),
     packageJSONStorage: new PackageJSONStorageNode(),
     tsconfigStorage: new TSConfigStorageNode(),
+    ...params,
+    customization: {
+      ...defaultCustomization,
+      ...params.customization,
+    },
   })
 
   const { customization } = state
