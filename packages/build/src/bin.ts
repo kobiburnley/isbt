@@ -5,17 +5,26 @@ import minimist from 'minimist'
 
   const {
     _: [command],
+    root,
   } = parsedArgs
 
   try {
     switch (command) {
       case 'start':
       case 'watch':
-        await (await import('./start')).start()
+        await (
+          await import('./start')
+        ).start({
+          root: String(root),
+        })
         break
       case 'build':
       default:
-        await (await import('./build')).build()
+        await (
+          await import('./build')
+        ).build({
+          root: String(root),
+        })
         break
     }
   } catch (e) {

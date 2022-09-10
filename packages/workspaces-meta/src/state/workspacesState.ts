@@ -1,5 +1,5 @@
 import { WorkspacesConfigState } from './workspacesConfigState'
-import { computed, makeObservable, observable, runInAction } from 'mobx'
+import { action, computed, makeObservable, observable, runInAction } from 'mobx'
 import {
   EnvironmentStorage,
   FilesStorage,
@@ -15,6 +15,7 @@ export interface WorkspacesStateParams {
   readonly packageJSONStorage: PackageJSONStorage
   readonly environmentStorage: EnvironmentStorage
   readonly filesStorage: FilesStorage
+  readonly root?: string
 }
 
 export class WorkspacesState {
@@ -23,6 +24,8 @@ export class WorkspacesState {
   readonly packageJSONStorage: PackageJSONStorage
   readonly environmentStorage: EnvironmentStorage
   readonly filesStorage: FilesStorage
+
+  root: string | null | undefined = null
 
   config: WorkspacesConfigState
   readonly workspacesMap = observable.map<string, WorkspaceState>([], {
@@ -37,6 +40,7 @@ export class WorkspacesState {
     this.packageJSONStorage = params.packageJSONStorage
     this.environmentStorage = params.environmentStorage
     this.filesStorage = params.filesStorage
+    this.root = params.root
 
     this.config = new WorkspacesConfigState({
       envState: this,
@@ -45,12 +49,31 @@ export class WorkspacesState {
 
     makeObservable(this, {
       cwd: observable.ref,
+      root: observable.ref,
       workspaces: computed,
+      submitTSConfig: action,
+      submitRootTSConfig: action,
+      effectiveWorkspaces: computed,
     })
   }
 
   get workspaces() {
     return Array.from(this.workspacesMap.values())
+  }
+
+  get effectiveWorkspaces() {
+    const { root, workspaces, workspacesMap } = this
+    if (root) {
+      const rootWorkspace = workspacesMap.get(root)
+
+      if (rootWorkspace) {
+        const { dependenciesDeep } = rootWorkspace
+        return workspaces.filter(
+          (w) => w.name === root || dependenciesDeep.has(w.name),
+        )
+      }
+    }
+    return workspaces
   }
 
   async init() {
@@ -60,6 +83,7 @@ export class WorkspacesState {
       config,
       workspacesMap,
       packageJSONStorage,
+      root,
     } = this
 
     this.cwd = await environmentStorage.getCwd()
@@ -94,10 +118,22 @@ export class WorkspacesState {
     await Promise.all(
       this.workspaces.map((workspace) => workspace.initDependencies()),
     )
+
+    runInAction(() => {
+      if (!root) {
+        return
+      }
+
+      const rootWorkspace = workspacesMap.get(root)
+
+      if (!rootWorkspace) {
+        return
+      }
+    })
   }
 
   async submitRootTSConfig() {
-    const { tsconfigStorage, customization, cwd } = this
+    const { tsconfigStorage, customization, cwd, effectiveWorkspaces } = this
     const { tsconfig: tsconfigCustomization } = customization
     const { outDir, esmName, cjsName } = tsconfigCustomization
 
@@ -106,7 +142,7 @@ export class WorkspacesState {
         outDir,
       },
       include: undefined,
-      references: this.workspaces.flatMap((workspace) => [
+      references: effectiveWorkspaces.flatMap((workspace) => [
         {
           path: tsconfigStorage.getProjectReferencePath({
             from: cwd,
@@ -141,9 +177,10 @@ export class WorkspacesState {
   }
 
   async submitTSConfig() {
+    const { effectiveWorkspaces } = this
     await Promise.all([
       this.submitRootTSConfig(),
-      ...this.workspaces.map((workspace) => workspace.submitTSConfig()),
+      ...effectiveWorkspaces.map((workspace) => workspace.submitTSConfig()),
     ])
   }
 }

@@ -45,6 +45,7 @@ export class WorkspaceState {
       dependencies: computed,
       initDependencies: action,
       name: computed,
+      dependenciesDeep: computed,
       init: action,
       submitTSConfig: action,
     })
@@ -110,6 +111,15 @@ export class WorkspaceState {
     return rawDependencies.filter(
       (workspace) => workspace.dir === rawDependenciesPaths.get(workspace.name),
     )
+  }
+
+  get dependenciesDeep(): Map<string, WorkspaceState> {
+    return new Map([
+      ...this.dependencies.map((w) => [w.name, w] as [string, WorkspaceState]),
+      ...this.dependencies.flatMap((w) =>
+        Array.from(w.dependenciesDeep.entries()),
+      ),
+    ])
   }
 
   get rawDependencies() {
