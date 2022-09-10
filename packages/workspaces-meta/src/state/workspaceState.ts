@@ -141,7 +141,10 @@ export class WorkspaceState {
       compilerOptions: {
         rootDir: tsconfigCustomization.rootDir,
       },
-      include: [tsconfigCustomization.include[0]],
+      include: [
+        tsconfigCustomization.rootDir,
+        `"${tsconfigCustomization.rootDir}/**/*.json"`,
+      ],
     }
 
     await tsconfigStorage.updateOrCreate(
