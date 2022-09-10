@@ -13,7 +13,7 @@ export async function build() {
   const state = new WorkspacesState({
     customization: {
       tsconfig: {
-        extends: '@isbt/core/tsconfig.base.json',
+        extends: '@isbt/build/tsconfig.base.json',
         base: 'tsconfig.json',
         outDir: 'dist',
         rootDir: 'src',

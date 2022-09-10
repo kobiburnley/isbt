@@ -10,12 +10,14 @@
   },
   "files": [
     "dist/cjs",
-    "dist/esm"
+    "dist/esm",
+    "tsconfig.base.json"
   ],
   "dependencies": {
     "@isbt/workspaces-meta": "1.17.0",
     "fp-error": "^1.0.0",
     "fp-ts": "^2.11.1",
+    "minimist": "^1.0.0",
     "tslib": "^2.0.0",
     "typescript": "^4.0.0"
   },

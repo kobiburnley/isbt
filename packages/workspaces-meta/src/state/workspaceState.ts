@@ -128,7 +128,7 @@ export class WorkspaceState {
   }
 
   async submitTSConfig() {
-    const { tsconfigStorage, customization, dir } = this
+    const { tsconfigStorage, customization, dir, packageJSON } = this
     const { tsconfig: tsconfigCustomization } = customization
     const { esmName, cjsName, outDir } = tsconfigCustomization
 
@@ -136,18 +136,7 @@ export class WorkspaceState {
       base: tsconfigCustomization.base,
     })
 
-    const tsconfigDefaults = {
-      extends: baseTSConfigRelative,
-      compilerOptions: {
-        rootDir: tsconfigCustomization.rootDir,
-      },
-      include: [
-        tsconfigCustomization.rootDir,
-        `${tsconfigCustomization.rootDir}/**/*.json`,
-      ],
-    }
-
-    await tsconfigStorage.updateOrCreate(
+    const baseTsconfig = await tsconfigStorage.updateOrCreate(
       dir,
       [
         {
@@ -159,6 +148,29 @@ export class WorkspaceState {
         path: tsconfigCustomization.base,
       },
     )
+
+    const tsconfigDefaults = {
+      extends: baseTSConfigRelative,
+      compilerOptions: {
+        ...(packageJSON.types
+          ? { rootDir: tsconfigCustomization.rootDir }
+          : {
+              noEmit: true,
+            }),
+      },
+
+      ...(packageJSON.types
+        ? {
+            include: [
+              tsconfigCustomization.rootDir,
+              `${tsconfigCustomization.rootDir}/**/*.json`,
+            ],
+          }
+        : {
+            include: baseTsconfig.include,
+            files: baseTsconfig.files,
+          }),
+    }
 
     await Promise.all([
       tsconfigStorage.updateOrCreate(

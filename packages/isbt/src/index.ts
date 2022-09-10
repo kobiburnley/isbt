@@ -16,7 +16,7 @@ import minimist from 'minimist'
         break
       case 'start':
       case 'watch':
-        await (await import('./start')).start()
+        await (await import('@isbt/build')).start()
         break
       case 'bundle':
         await (
