@@ -40,6 +40,10 @@ export async function build(params: Partial<WorkspacesStateParams> = {}) {
     `--build tsconfig.${tsconfig.esmName}.json`,
   ].join(' ')
 
+  if (state.root) {
+    console.log(`Starting from root package: ${state.root}`)
+  }
+
   console.log(`> ${tscCommand}`)
 
   await new Promise<void>((resolve, reject) => {

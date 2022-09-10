@@ -137,10 +137,6 @@ export class WorkspacesState {
     const { tsconfig: tsconfigCustomization } = customization
     const { outDir, esmName, cjsName } = tsconfigCustomization
 
-    console.log({
-      effectiveWorkspaces: effectiveWorkspaces.map((a) => a.name),
-    })
-
     const tsconfigDefaults = {
       compilerOptions: {
         outDir,
