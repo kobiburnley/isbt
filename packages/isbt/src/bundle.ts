@@ -1,4 +1,4 @@
-import { build, BuildOptions, Platform } from 'esbuild'
+import { context as esbuildContext, BuildOptions, Platform } from 'esbuild'
 import path from 'path'
 import * as process from 'process'
 import globby from 'globby'
@@ -13,7 +13,6 @@ interface BuildVariant {
   env: string
   ext: string
   minify: boolean
-  watch: boolean
 }
 
 export async function bundle({
@@ -68,7 +67,6 @@ export async function bundle({
           const createBuildOptions = ({
             minify,
             ext,
-            watch,
           }: BuildVariant): BuildOptions => {
             return {
               entryPoints: [path.join(platformBundlesDir, bundleFile)],
@@ -86,27 +84,30 @@ export async function bundle({
               treeShaking: true,
               splitting: platform !== 'node',
               format: platform === 'browser' ? 'esm' : 'cjs',
-              watch,
             }
           }
 
-          await build(
+          const context = await esbuildContext(
             createBuildOptions(
               dev
                 ? {
                     env: 'development',
                     ext: '.development',
                     minify: false,
-                    watch: true,
                   }
                 : {
                     env: 'production',
                     ext: '',
                     minify: true,
-                    watch: false,
                   },
             ),
           )
+
+          await context.rebuild()
+
+          if (dev) {
+            context.watch()
+          }
         }),
       )
     }),

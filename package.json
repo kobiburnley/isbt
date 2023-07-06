@@ -16,6 +16,9 @@
   "devDependencies": {
     "@isbt/core": "rc"
   },
+  "resolutions": {
+    "esbuild": ">=0.15.0"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
