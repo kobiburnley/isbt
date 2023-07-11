@@ -21,6 +21,7 @@
   "dependencies": {
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
+    "@fal-works/esbuild-plugin-global-externals": "^2.1.2",
     "@isbt/build": "1.0.0",
     "@isbt/workspaces-meta": "1.17.0",
     "@lerna/cli": "^4.0.0",
@@ -29,7 +30,7 @@
     "@types/minimist": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^4.0.0",
-    "esbuild": ">=0.15.0",
+    "esbuild": "^0.18.11",
     "eslint": "^7.0.0",
     "eslint-plugin-import": "^2.0.0",
     "eslint-plugin-prettier": "^4.0.0",

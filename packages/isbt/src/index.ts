@@ -21,6 +21,7 @@ import { defaultCustomization } from './defaultCustomization'
           await import('@isbt/build')
         ).start({
           customization: defaultCustomization,
+          dev: Boolean(dev),
         })
         break
       case 'bundle':
@@ -41,6 +42,7 @@ import { defaultCustomization } from './defaultCustomization'
           await import('@isbt/build')
         ).build({
           customization: defaultCustomization,
+          dev: Boolean(dev),
         })
         break
     }

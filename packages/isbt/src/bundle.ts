@@ -8,6 +8,7 @@ import React from 'react'
 import { SPA } from './SPA'
 import { AddressInfo } from 'net'
 import { openBrowser } from './openBrowser'
+import { globalExternals } from '@fal-works/esbuild-plugin-global-externals'
 
 interface BuildVariant {
   env: string
@@ -24,14 +25,14 @@ export async function bundle({
 }) {
   const platforms: Platform[] = ['browser', 'node']
 
-  const bundlesDir = path.join(process.cwd(), 'src', 'bundles')
+  const bundlesDir = path.join(process.cwd(), 'dist', 'esm', 'bundles')
   const outdirBase = path.join('dist', 'bundles')
 
   await Promise.all(
     platforms.map(async (platform) => {
       const platformBundlesDir = path.join(bundlesDir, platform)
 
-      const bundleFiles = await globby(['**/*.ts', '**/*.tsx'], {
+      const bundleFiles = await globby(['**/*.js'], {
         absolute: false,
         cwd: platformBundlesDir,
       })
@@ -59,7 +60,7 @@ export async function bundle({
             const server = app.listen(0, '0.0.0.0', () => {
               const { port } = server.address() as AddressInfo
               const url = `http://localhost:${port}`
-              console.log('Serving SPA for', outdir, url)
+              console.log('Serving SPAA for', outdir, url)
               openBrowser(url)
             })
           }
@@ -84,6 +85,35 @@ export async function bundle({
               treeShaking: true,
               splitting: platform !== 'node',
               format: platform === 'browser' ? 'esm' : 'cjs',
+              ...platform === 'browser' && {
+                banner: {
+                  js: `(function() {`,
+                },
+                footer: {
+                  js: '})();',
+                },
+              },
+
+              plugins: [
+                globalExternals({
+                  tslib: {
+                    varName: 'tslib',
+                    namedExports: [
+                      '__values',
+                      '__assign',
+                      '__awaiter',
+                      '__generator',
+                      '__extends',
+                      '__async',
+                      '__spreadProps',
+                      '__spreadValues',
+                      '__makeTemplateObject',
+                    ],
+                  },
+                  react: 'React',
+                  'react-dom': 'ReactDOM',
+                }),
+              ],
             }
           }
 
@@ -103,10 +133,13 @@ export async function bundle({
             ),
           )
 
-          await context.rebuild()
+
 
           if (dev) {
             context.watch()
+          } else {
+            await context.rebuild()
+            await context.dispose()
           }
         }),
       )
