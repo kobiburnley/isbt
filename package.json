@@ -10,7 +10,7 @@
     "lint": "yarn workspaces run isbt lint . --passWithNoTests",
     "test": "yarn workspaces run jest  --passWithNoTests",
     "canary": "yarn release --canary",
-    "release": "lerna publish --no-push --exact --conventional-commits --yes",
+    "release": "lerna publish --no-push --no-git-tag-version --exact --conventional-commits --yes",
     "bump": "lerna version --no-push --exact --conventional-commits",
     "version": "yarn install && git add yarn.lock"
   },
