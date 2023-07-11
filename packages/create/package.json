@@ -6,8 +6,8 @@
   "types": "dist/cjs/index.d.ts",
   "sideEffects": false,
   "bin": {
-    "isbt-create": "dist/cjs/index.js",
-    "create": "dist/cjs/index.js"
+    "create": "dist/cjs/index.js",
+    "isbt-create": "dist/cjs/index.js"
   },
   "files": [
     "dist/cjs",
