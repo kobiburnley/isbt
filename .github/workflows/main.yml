@@ -106,3 +106,27 @@ jobs:
         run: yarn release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  canary:
+    needs: [build, test]
+    runs-on: ubuntu-latest
+    if: ${{ github.ref != 'refs/heads/main' && github.event.head_commit.message == 'Publish' }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
+          node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: actions/cache@v2
+        id: build-cache
+        with:
+          path: |
+            */*/dist
+          key: ${{ runner.os }}-${{ hashFiles('**/src/**/*.ts*') }}
+      - run: yarn install --immutable
+      - name: publish
+        if: steps.build-cache.outputs.cache-hit == 'true'
+        run: yarn canary --preid pr_${{ github.pull_request.number }} --dist-tag canary
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
