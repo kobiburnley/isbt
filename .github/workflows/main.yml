@@ -15,7 +15,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           cache: 'yarn'
+          node-version-file: '.nvmrc'
       - run: yarn install --immutable
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   build:
     needs: install
@@ -70,7 +73,7 @@ jobs:
         run: yarn workspaces run jest --passWithNoTests
 
   publish:
-#    needs: [build]
+    needs: [install]
     runs-on: ubuntu-latest
 #    if: ${{ github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, 'Publish') }}
     steps:
