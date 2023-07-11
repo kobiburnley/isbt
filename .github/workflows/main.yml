@@ -96,6 +96,6 @@ jobs:
       - run: yarn install --immutable
       - name: publish
         if: steps.build-cache.outputs.cache-hit == 'true'
-        run: cat $RUNNER_TEMP/.npmrc
+        run: npm whoami
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
