@@ -85,14 +85,14 @@ export async function bundle({
               treeShaking: true,
               splitting: platform !== 'node',
               format: platform === 'browser' ? 'esm' : 'cjs',
-              ...platform === 'browser' && {
+              ...(platform === 'browser' && {
                 banner: {
                   js: `(function() {`,
                 },
                 footer: {
                   js: '})();',
                 },
-              },
+              }),
 
               plugins: [
                 globalExternals({
@@ -132,8 +132,6 @@ export async function bundle({
                   },
             ),
           )
-
-
 
           if (dev) {
             context.watch()

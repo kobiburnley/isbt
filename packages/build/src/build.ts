@@ -71,8 +71,8 @@ export async function build(params: Partial<BuildParams> = {}) {
 
   await tscPromise
   const bundlePromise = bundle({
-    state
+    state,
   })
 
-  await bundlePromise;
+  await bundlePromise
 }

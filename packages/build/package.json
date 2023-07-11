@@ -24,5 +24,13 @@
     "tslib": "^2.0.0",
     "typescript": "^4.0.0"
   },
+  "peerDependencies": {
+    "globby": "^11.0.0",
+    "esbuild": "^0.18.11",
+    "express": "^4.0.0",
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0",
+    "open": "^8.0.0"
+  },
   "license": "MIT"
 }

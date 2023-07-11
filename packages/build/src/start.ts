@@ -84,6 +84,6 @@ export async function start(params: Partial<StartParams> = {}) {
   await tscDidFirstBuildPromise
   bundle({
     dev: true,
-    state
+    state,
   })
 }

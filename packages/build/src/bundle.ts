@@ -100,9 +100,11 @@ export async function bundle({
                     {
                       name: 'log-build-end',
                       setup(build) {
-                        let count = 0
+                        const count = 0
                         build.onEnd((result) => {
-                          console.log(`esbuild: Found ${result.errors.length} errors. Watching for file changes.`,)
+                          console.log(
+                            `esbuild: Found ${result.errors.length} errors. Watching for file changes.`,
+                          )
                         })
                       },
                     },
@@ -167,7 +169,9 @@ export async function bundle({
       const url = `http://localhost:${port}`
       console.log(
         'Serving',
-        JSON.stringify(nonEmptyOutDirs.map((e) => path.join(e.workspace.name, e.outdirBase))),
+        JSON.stringify(
+          nonEmptyOutDirs.map((e) => path.join(e.workspace.name, e.outdirBase)),
+        ),
         url,
       )
       // openBrowser(url)
