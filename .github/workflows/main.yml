@@ -9,16 +9,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  prJob:
-    name: Print info
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print GitHub event action
-        run: |
-          echo "${{ github.event.action }}"
-          echo "${{ github.event.pull_request.merged }}"
-          echo "${{ github.event_name }}"
-
   install:
     runs-on: ubuntu-latest
     steps:
@@ -80,7 +70,7 @@ jobs:
   publish:
     needs: [build, test]
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch' }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2.3.0
