@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@3
+      - uses: actions/setup-node@v3
         with:
           cache: 'yarn'
       - run: yarn install --immutable
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@3
+      - uses: actions/setup-node@v3
         with:
           cache: 'yarn'
           node-version-file: '.nvmrc'
@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@3
+      - uses: actions/setup-node@v3
         with:
           cache: 'yarn'
           node-version-file: '.nvmrc'
@@ -55,7 +55,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@3
+      - uses: actions/setup-node@v3
         with:
           cache: 'yarn'
           node-version-file: '.nvmrc'
@@ -75,7 +75,7 @@ jobs:
 #    if: ${{ github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, 'Publish') }}
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@3
+      - uses: actions/setup-node@v3
         with:
           cache: 'yarn'
           node-version-file: '.nvmrc'
