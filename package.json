@@ -11,7 +11,9 @@
     "test": "yarn workspaces run jest  --passWithNoTests",
     "release:no-git": "yarn release --force-publish",
     "release:rc": "yarn release:no-git --canary --preid rc --dist-tag rc",
-    "release": "lerna publish --message \"Publish [skip ci]\" --exact --conventional-commits"
+    "release": "lerna publish --no-push --exact --conventional-commits --yes",
+    "bump": "lerna version --no-push --exact --conventional-commits",
+    "version": "yarn install && git add yarn.lock"
   },
   "devDependencies": {
     "@isbt/core": "rc"
