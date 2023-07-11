@@ -9,6 +9,14 @@ on:
   workflow_dispatch:
 
 jobs:
+  prJob:
+    name: Print info
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print GitHub event action
+        run: |
+          echo "${{ github.event.action }}"
+
   install:
     runs-on: ubuntu-latest
     steps:
