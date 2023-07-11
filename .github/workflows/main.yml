@@ -18,6 +18,8 @@ jobs:
           node-version-file: '.nvmrc'
           registry-url: 'https://registry.npmjs.org'
       - run: yarn install --immutable
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   build:
     needs: install
@@ -39,6 +41,9 @@ jobs:
       - name: build
         if: steps.build-cache.outputs.cache-hit != 'true'
         run: yarn run isbt
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
 
   lint:
     needs: install
@@ -53,6 +58,8 @@ jobs:
       - run: yarn install --immutable
       - name: lint
         run: yarn workspaces run isbt lint . --passWithNoTests
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   test:
     needs: build
@@ -73,6 +80,8 @@ jobs:
       - run: yarn install --immutable
       - name: test
         run: yarn workspaces run jest --passWithNoTests
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   publish:
     needs: [install]
