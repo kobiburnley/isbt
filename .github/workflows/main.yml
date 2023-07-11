@@ -16,6 +16,7 @@ jobs:
       - name: Print GitHub event action
         run: |
           echo "${{ github.event.action }}"
+          echo "${{ github.event.pull_request.merged }}"
 
   install:
     runs-on: ubuntu-latest
@@ -78,7 +79,7 @@ jobs:
   publish:
     needs: [build, test]
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, '[release]') }}
+    if: ${{ github.ref == 'refs/heads/main' && github.event.action == '' && github.event.pull_request.merged == true }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2.3.0
