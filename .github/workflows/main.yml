@@ -70,7 +70,7 @@ jobs:
   publish:
     needs: [build, test]
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, 'Publish') }}
+#    if: ${{ github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, 'Publish') }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2.3.0
@@ -85,6 +85,6 @@ jobs:
       - run: yarn install --immutable
       - name: publish
         if: steps.build-cache.outputs.cache-hit == 'true'
-        run: yarn release
+        run: npm whoami
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
