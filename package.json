@@ -20,11 +20,6 @@
   "resolutions": {
     "esbuild": ">=0.15.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,ts,tsx,json}": [
       "prettier --write"

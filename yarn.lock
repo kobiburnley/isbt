@@ -1642,7 +1642,7 @@ __metadata:
     fp-error: ^1.0.0
     fp-ts: ^2.11.1
     globby: ^11.0.0
-    husky: ^4.0.0
+    husky: ^8.0.0
     jest: ^27.0.0
     lint-staged: ^10.0.0
     minimist: ^1.0.0
@@ -5045,6 +5045,15 @@ __metadata:
     husky-run: bin/run.js
     husky-upgrade: lib/upgrader/bin.js
   checksum: c7aa15edf35ba8f1451be2bc73fffbdecaf6fea06516e45603d89457463b5e43454bb1f5952a9f0c905d700f4d8912052c9d4c6b8eb8186a55df46e792c17fcb
+  languageName: node
+  linkType: hard
+
+"husky@npm:^8.0.0":
+  version: 8.0.3
+  resolution: "husky@npm:8.0.3"
+  bin:
+    husky: lib/bin.js
+  checksum: 6722591771c657b91a1abb082e07f6547eca79144d678e586828ae806499d90dce2a6aee08b66183fd8b085f19d20e0990a2ad396961746b4c8bd5bdb619d668
   languageName: node
   linkType: hard
 
