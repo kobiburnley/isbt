@@ -16,7 +16,8 @@
     "dist/esm"
   ],
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "isbt lint"
   },
   "dependencies": {
     "@babel/preset-env": "^7.0.0",
@@ -50,6 +51,7 @@
     "typescript": "^4.0.0"
   },
   "devDependencies": {
+    "@isbt/core": "rc",
     "@types/express": "^4.0.0",
     "@types/node": "^14.0.0",
     "@types/open": "^6.0.0",

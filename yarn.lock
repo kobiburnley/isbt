@@ -1542,6 +1542,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@isbt/build@workspace:packages/build"
   dependencies:
+    "@isbt/core": rc
     "@isbt/workspaces-meta": 1.17.0
     fp-error: ^1.0.0
     fp-ts: ^2.11.1
@@ -1623,6 +1624,7 @@ __metadata:
     "@babel/preset-typescript": ^7.0.0
     "@fal-works/esbuild-plugin-global-externals": ^2.1.2
     "@isbt/build": 1.0.0
+    "@isbt/core": rc
     "@isbt/workspaces-meta": 1.17.0
     "@lerna/cli": ^4.0.0
     "@lerna/exec": ^4.0.0
@@ -1663,6 +1665,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@isbt/create@workspace:packages/create"
   dependencies:
+    "@isbt/core": rc
     "@qoby/chain-error": ^1.0.0
     "@types/fs-extra": ^9.0.0
     "@types/node": ^14.0.0
@@ -1679,6 +1682,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@isbt/workspaces-meta@workspace:packages/workspaces-meta"
   dependencies:
+    "@isbt/core": rc
     "@types/lodash": ^4.0.0
     "@types/node": ^14.0.0
     fp-ts: ^2.11.1

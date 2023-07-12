@@ -7,8 +7,8 @@
   "scripts": {
     "start": "isbt start",
     "build": "isbt build",
-    "lint": "yarn workspaces foreach -A run isbt lint . --passWithNoTests",
-    "test": "yarn workspaces foreach -A run jest  --passWithNoTests",
+    "lint": "yarn workspaces foreach -A run lint . --passWithNoTests",
+    "test": "yarn workspaces foreach -A run test  --passWithNoTests",
     "canary": "yarn release --canary",
     "release": "lerna publish --no-push --no-git-tag-version --exact --conventional-commits --yes",
     "bump": "lerna version --no-push --exact --conventional-commits",

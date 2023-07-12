@@ -57,7 +57,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: yarn install --immutable
       - name: lint
-        run: yarn workspaces run isbt lint . --passWithNoTests
+        run: yarn lint
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -79,7 +79,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/src/**/*.ts*') }}
       - run: yarn install --immutable
       - name: test
-        run: yarn workspaces run jest --passWithNoTests
+        run: yarn test
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 

@@ -5,6 +5,9 @@
   "module": "dist/esm/index.js",
   "types": "dist/cjs/index.d.ts",
   "sideEffects": false,
+  "scripts": {
+    "lint": "isbt lint"
+  },
   "bin": {
     "create": "dist/cjs/index.js",
     "isbt-create": "dist/cjs/index.js"
@@ -21,6 +24,7 @@
     "fs-extra": "^9.0.0"
   },
   "devDependencies": {
+    "@isbt/core": "rc",
     "@types/fs-extra": "^9.0.0",
     "@types/node": "^14.0.0"
   },
