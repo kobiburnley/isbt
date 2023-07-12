@@ -7,26 +7,24 @@
   "scripts": {
     "start": "isbt start",
     "build": "isbt build",
-    "lint": "yarn workspaces run isbt lint . --passWithNoTests",
-    "test": "yarn workspaces run jest  --passWithNoTests",
-    "release:no-git": "yarn release --force-publish",
-    "release:rc": "yarn release:no-git --canary --preid rc --dist-tag rc",
-    "release": "lerna publish --no-push --exact --conventional-commits --yes",
+    "lint": "yarn workspaces foreach -A run lint . --passWithNoTests",
+    "test": "yarn workspaces foreach -A run test  --passWithNoTests",
+    "canary": "yarn release --canary",
+    "release": "lerna publish --no-push --no-git-tag-version --exact --conventional-commits --yes",
     "bump": "lerna version --no-push --exact --conventional-commits",
     "version": "yarn install && git add yarn.lock"
   },
   "devDependencies": {
     "@isbt/core": "rc"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+  "resolutions": {
+    "esbuild": ">=0.15.0"
   },
   "lint-staged": {
     "*.{js,ts,tsx,json}": [
       "prettier --write"
     ]
   },
-  "version": "0.0.0"
+  "version": "0.0.0",
+  "packageManager": "yarn@3.6.1"
 }

@@ -1,4 +1,4 @@
-import { build, BuildOptions, Platform } from 'esbuild'
+import { context as esbuildContext, BuildOptions, Platform } from 'esbuild'
 import path from 'path'
 import * as process from 'process'
 import globby from 'globby'
@@ -8,12 +8,12 @@ import React from 'react'
 import { SPA } from './SPA'
 import { AddressInfo } from 'net'
 import { openBrowser } from './openBrowser'
+import { globalExternals } from '@fal-works/esbuild-plugin-global-externals'
 
 interface BuildVariant {
   env: string
   ext: string
   minify: boolean
-  watch: boolean
 }
 
 export async function bundle({
@@ -25,14 +25,14 @@ export async function bundle({
 }) {
   const platforms: Platform[] = ['browser', 'node']
 
-  const bundlesDir = path.join(process.cwd(), 'src', 'bundles')
+  const bundlesDir = path.join(process.cwd(), 'dist', 'esm', 'bundles')
   const outdirBase = path.join('dist', 'bundles')
 
   await Promise.all(
     platforms.map(async (platform) => {
       const platformBundlesDir = path.join(bundlesDir, platform)
 
-      const bundleFiles = await globby(['**/*.ts', '**/*.tsx'], {
+      const bundleFiles = await globby(['**/*.js'], {
         absolute: false,
         cwd: platformBundlesDir,
       })
@@ -60,7 +60,7 @@ export async function bundle({
             const server = app.listen(0, '0.0.0.0', () => {
               const { port } = server.address() as AddressInfo
               const url = `http://localhost:${port}`
-              console.log('Serving SPA for', outdir, url)
+              console.log('Serving SPAA for', outdir, url)
               openBrowser(url)
             })
           }
@@ -68,7 +68,6 @@ export async function bundle({
           const createBuildOptions = ({
             minify,
             ext,
-            watch,
           }: BuildVariant): BuildOptions => {
             return {
               entryPoints: [path.join(platformBundlesDir, bundleFile)],
@@ -86,27 +85,60 @@ export async function bundle({
               treeShaking: true,
               splitting: platform !== 'node',
               format: platform === 'browser' ? 'esm' : 'cjs',
-              watch,
+              ...(platform === 'browser' && {
+                banner: {
+                  js: `(function() {`,
+                },
+                footer: {
+                  js: '})();',
+                },
+              }),
+
+              plugins: [
+                globalExternals({
+                  tslib: {
+                    varName: 'tslib',
+                    namedExports: [
+                      '__values',
+                      '__assign',
+                      '__awaiter',
+                      '__generator',
+                      '__extends',
+                      '__async',
+                      '__spreadProps',
+                      '__spreadValues',
+                      '__makeTemplateObject',
+                    ],
+                  },
+                  react: 'React',
+                  'react-dom': 'ReactDOM',
+                }),
+              ],
             }
           }
 
-          await build(
+          const context = await esbuildContext(
             createBuildOptions(
               dev
                 ? {
                     env: 'development',
                     ext: '.development',
                     minify: false,
-                    watch: true,
                   }
                 : {
                     env: 'production',
                     ext: '',
                     minify: true,
-                    watch: false,
                   },
             ),
           )
+
+          if (dev) {
+            context.watch()
+          } else {
+            await context.rebuild()
+            await context.dispose()
+          }
         }),
       )
     }),

@@ -10,8 +10,13 @@ import { exec } from 'child_process'
 import { throwLeft } from 'fp-error'
 import { resolveBin } from './resolveBin'
 import { defaultCustomization } from './defaultCustomization'
+import { bundle } from './bundle'
 
-export async function build(params: Partial<WorkspacesStateParams> = {}) {
+export interface BuildParams extends Partial<WorkspacesStateParams> {
+  disableHash?: boolean
+}
+
+export async function build(params: Partial<BuildParams> = {}) {
   const state = new WorkspacesState({
     filesStorage: new FilesStorageNode(),
     environmentStorage: new EnvironmentStorageNode(),
@@ -45,7 +50,7 @@ export async function build(params: Partial<WorkspacesStateParams> = {}) {
   console.log(`Building from directory ${cwd}`)
   console.log(`> ${tscCommand}`)
 
-  await new Promise<void>((resolve, reject) => {
+  const tscPromise = new Promise<void>((resolve, reject) => {
     const tscProcess = exec(
       tscCommand,
       {
@@ -63,4 +68,12 @@ export async function build(params: Partial<WorkspacesStateParams> = {}) {
     tscProcess.stdout?.pipe(process.stdout)
     tscProcess.stderr?.pipe(process.stderr)
   })
+
+  await tscPromise
+  const bundlePromise = bundle({
+    state,
+    disableHash: params.disableHash,
+  })
+
+  await bundlePromise
 }

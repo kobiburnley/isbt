@@ -5,6 +5,6 @@
   "types": "dist/cjs/index.d.ts",
   "sideEffects": false,
   "dependencies": {
-    "esbuild": "^0.15.0"
+    "esbuild": ">=0.15.0"
   }
 }

@@ -10,8 +10,16 @@ import { exec } from 'child_process'
 import { throwLeft } from 'fp-error'
 import { resolveBin } from './resolveBin'
 import { defaultCustomization } from './defaultCustomization'
+import { bundle } from './bundle'
+import { EventEmitter } from 'events'
 
-export async function start(params: Partial<WorkspacesStateParams> = {}) {
+export interface StartParams extends Partial<WorkspacesStateParams> {
+  dev?: boolean
+}
+
+export async function start(params: Partial<StartParams> = {}) {
+  const events = new EventEmitter()
+
   const state = new WorkspacesState({
     filesStorage: new FilesStorageNode(),
     environmentStorage: new EnvironmentStorageNode(),
@@ -46,7 +54,11 @@ export async function start(params: Partial<WorkspacesStateParams> = {}) {
   console.log(`Building from directory ${cwd}`)
   console.log(`> ${tscCommand}`)
 
-  await new Promise<void>((resolve, reject) => {
+  const tscDidFirstBuildPromise = new Promise<void>((resolve) => {
+    events.once('tscDidFirstBuild', resolve)
+  })
+
+  new Promise<void>((resolve, reject) => {
     const tscProcess = exec(
       tscCommand,
       {
@@ -61,6 +73,17 @@ export async function start(params: Partial<WorkspacesStateParams> = {}) {
       },
     )
 
-    tscProcess.stdout?.pipe(process.stdout)
+    tscProcess.stdout?.on('data', (data) => {
+      if (data.includes('Watching for file changes')) {
+        events.emit('tscDidFirstBuild')
+        console.log(`tsc: ${data.trim()}`)
+      }
+    })
+  })
+
+  await tscDidFirstBuildPromise
+  bundle({
+    dev: true,
+    state,
   })
 }
