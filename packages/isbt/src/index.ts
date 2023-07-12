@@ -7,6 +7,7 @@ import { defaultCustomization } from './defaultCustomization'
   const {
     _: [command],
     dev,
+    hash,
     serve,
   } = parsedArgs
 
@@ -42,7 +43,7 @@ import { defaultCustomization } from './defaultCustomization'
           await import('@isbt/build')
         ).build({
           customization: defaultCustomization,
-          dev: Boolean(dev),
+          hash: Boolean(hash),
         })
         break
     }
