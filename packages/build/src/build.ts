@@ -13,7 +13,7 @@ import { defaultCustomization } from './defaultCustomization'
 import { bundle } from './bundle'
 
 export interface BuildParams extends Partial<WorkspacesStateParams> {
-  hash?: boolean
+  disableHash?: boolean
 }
 
 export async function build(params: Partial<BuildParams> = {}) {
@@ -72,7 +72,7 @@ export async function build(params: Partial<BuildParams> = {}) {
   await tscPromise
   const bundlePromise = bundle({
     state,
-    hash: params.hash,
+    disableHash: params.disableHash,
   })
 
   await bundlePromise

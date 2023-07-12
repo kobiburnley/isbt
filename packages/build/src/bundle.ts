@@ -17,11 +17,11 @@ interface BuildVariant {
 
 export async function bundle({
   dev,
-  hash,
+  disableHash,
   state,
 }: {
   dev?: boolean
-  hash?: boolean
+  disableHash?: boolean
   state: WorkspacesState
 }) {
   const platforms: Platform[] = ['browser', 'node']
@@ -54,7 +54,7 @@ export async function bundle({
                   entryPoints: [path.join(platformBundlesDir, bundleFile)],
                   entryNames:
                     platform === 'browser' && !dev
-                      ? `[dir]/[name]${ext}${hash ? '.[hash]' : ''}`
+                      ? `[dir]/[name]${ext}${disableHash ? '' : '.[hash]'}`
                       : `[dir]/[name]${ext}`,
                   bundle: true,
                   platform,
